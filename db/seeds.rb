@@ -17,9 +17,9 @@ u.name="jibin"
 u.password="jibin"
 u.email="jibin@gmail.com"
 u.phone="1234567890"
-u.prefAmount="19"
-u.prefLocation=3
-u.prefProvider=1
+u.pref_amount="19"
+u.pref_location=3
+u.pref_provider=1
 u.save
 
 t=Transaction.new
@@ -45,9 +45,9 @@ u.name="christopher"
 u.password="christopher"
 u.email="christopher@gmail.com"
 u.phone="1234567891"
-u.prefAmount="23"
-u.prefLocation=3
-u.prefProvider=1
+u.pref_amount="23"
+u.pref_location=3
+u.pref_provider=1
 u.save
 
 t=Transaction.new
@@ -64,9 +64,9 @@ u.name="kavya"
 u.password="kavya"
 u.email="kavya@gmail.com"
 u.phone="1234567892"
-u.prefAmount="26"
-u.prefLocation=1
-u.prefProvider=3
+u.pref_amount="26"
+u.pref_location=1
+u.pref_provider=3
 u.save
 
 t=Transaction.new
@@ -83,9 +83,9 @@ u.name="vivek"
 u.password="vivek"
 u.email="vivek@gmail.com"
 u.phone="1234567893"
-u.prefAmount="45"
-u.prefLocation=1
-u.prefProvider=3
+u.pref_amount="45"
+u.pref_location=1
+u.pref_provider=3
 u.save
 
 t=Transaction.new
@@ -112,9 +112,9 @@ u.name="habib"
 u.password="habib"
 u.email="habib@gmail.com"
 u.phone="1234567894"
-u.prefAmount="32"
-u.prefLocation=1
-u.prefProvider=2
+u.pref_amount="32"
+u.pref_location=1
+u.pref_provider=2
 u.save
 
 

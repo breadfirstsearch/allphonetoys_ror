@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   validates :password,  presence: true, length: { maximum: 50 }
 
-  validates :prefAmount,numericality: { only_integer: true, less_than_or_equal_to:1000 }
+  validates :pref_amount,numericality: { only_integer: true, less_than_or_equal_to:1000 }
 
   validates :email, presence: true, uniqueness: true
   validates_format_of :email, :with => Devise::email_regexp
@@ -20,11 +20,11 @@ class User < ApplicationRecord
 
     @users = User.all
     search_name ? @users = User.where('name LIKE ?', "%#{search_name}%") : @users
-    search_amount ? @users = @users.where('prefAmount LIKE ?', "%#{search_amount}%")  : @users
+    search_amount ? @users = @users.where('pref_amount LIKE ?', "%#{search_amount}%")  : @users
     search_phone ? @users = @users.where('phone LIKE ?', "%#{search_phone}%")  : @users
     search_email ? @users = @users.where('email LIKE ?', "%#{search_email}%")  : @users
-    search_provider ? @users = @users.where('prefProvider LIKE ?', "%#{search_provider}%")  : @users
-    search_location ? @users = @users.where('prefLocation LIKE ?', "%#{search_location}%")  : @users
+    search_provider ? @users = @users.where('pref_provider LIKE ?', "%#{search_provider}%")  : @users
+    search_location ? @users = @users.where('pref_location LIKE ?', "%#{search_location}%")  : @users
 
   end
 

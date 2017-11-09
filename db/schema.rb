@@ -62,9 +62,9 @@ ActiveRecord::Schema.define(version: 20171101040848) do
     t.string "email"
     t.integer "phone", limit: 8
     t.string "password"
-    t.integer "prefProvider"
-    t.integer "prefAmount"
-    t.integer "prefLocation"
+    t.integer "pref_provider"
+    t.integer "pref_amount"
+    t.integer "pref_location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
