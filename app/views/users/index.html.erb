@@ -1,44 +1,18 @@
-
-<% if false %>
-
-<%= form_with(url: user_index_path, local: true) do |form| %>
-
-    <table>
-      <tr>
-        <td> <%= form.label :"Name (contains)" %>
-          <%= form.text_field :name, id: :name, value: session[:user_name] %> </td>
-
-        <td><%= form.label :"Email (contains)" %>
-          <%= form.text_field :email, id: :email, value: session[:user_email] %> </td>
-
-        <td>
-          <%= form.label :"Phone number (contains)" %>
-          <%= form.text_field :phone, id: :phone, value: session[:user_phone] %>
-        </td>
-
-        <td> <%= form.label :"Preferred Amount " %>
-          <%= form.number_field :prefAmount, id: :prefAmount, value: session[:user_pref_amount] %> </td>
-
-
-        <td>
-          <%= form.label :"Preferred Provider" %>
-          <%= form.text_field :prefProvider, id: :prefProvider, value: session[:user_pref_provider] %>
-        </td>
-
-        <td>
-          <%= form.label :"Preferred Location" %>
-          <%= form.text_field :prefLocation, id: :prefLocation, value: session[:user_pref_location] %>
-        </td>
-
-      </tr>
-    </table>
-
-    <div class="actions">
-      <%= form.submit "Apply"%>
-    </div>
+<%= form_tag users_path , :method => 'get' do %>
+    <p>
+      <h4>Search Users by :</h4>
+      <%= text_field_tag :search_name, params[:search_name] ,    placeholder: 'Name' %>
+      <%= text_field_tag :search_email, params[:search_email], placeholder: 'Email' %>
+      <%= text_field_tag :search_phone, params[:search_phone],   placeholder: 'Phone' %>
+      <%= text_field_tag :search_amount, params[:search_amount], placeholder: 'Amount', size: "19" %>
+      <%= text_field_tag :search_provider, params[:search_provider], placeholder: 'Provider' %>
+      <%= text_field_tag :search_location, params[:search_location], placeholder: 'Location' %>
+      <%= submit_tag 'Search', :name => nil %>
+    </p>
 <% end %>
 
-<% end %>
+
+
 
 <table class="table table-striped">
   <thead>

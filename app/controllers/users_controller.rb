@@ -8,21 +8,7 @@ class UsersController < ApplicationController
   def index
     #@users = User.all
 
-    session[:user_name] = params[:name]
-    session[:user_email] = params[:email]
-    session[:user_phone] = params[:phone]
-    session[:user_pref_amount] = params[:prefAmount]
-    session[:user_pref_provider] = params[:prefProvider]
-    session[:user_pref_location] = params[:prefLocation]
-
-    @users = User.where(nil) # creates an anonymous scope
-    @users = @users.user_name(session[:user_name]) if session[:user_name].present?
-    @users = @users.user_email(session[:user_email]) if session[:user_email].present?
-    @users = @users.user_phone(session[:user_phone]) if session[:user_phone].present?
-    @users = @users.user_pref_amount(session[:user_pref_amount]) if session[:user_pref_amount].present?
-    @users = @users.user_pref_provider(session[:user_pref_provider]) if session[:user_pref_provider].present?
-    @users = @users.user_pref_location(session[:user_pref_location]) if session[:user_pref_location].present?
-
+    @users = User.search(params[:search_name],params[:search_phone],params[:search_amount],params[:search_email], params[:search_provider], params[:search_location] )
 
   end
 
