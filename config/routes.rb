@@ -29,4 +29,9 @@ Rails.application.routes.draw do
   post '/providers', to: 'providers#create'
   delete '/providers/:id', to: 'providers#destroy', as: 'deleteProvider'
 
+  get '/timings', to: 'timings#index'
+  get '/timings/new', to: 'timings#new', as: 'new_timing'
+  post '/timings', to: 'timings#create'
+  delete '/timings/:id', to: 'timings#destroy', as: 'deleteTiming'
+
 end
