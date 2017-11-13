@@ -10,11 +10,7 @@
   <% end %>
 
   <div class="field form-group-condensed">
-<<<<<<< Updated upstream
-    <%= form.number_field :amount, id: :transaction_amount, class: 'form-control', placeholder: '$ Amount' %>
-=======
     <%= form.number_field :amount, :value=>@loggedin_user.pref_amount, id: :transaction_amount, class: 'form-control', placeholder: '$ Amount' %>
->>>>>>> Stashed changes
   </div>
 
   <div class="field form-group-condensed">

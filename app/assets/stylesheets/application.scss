@@ -23,8 +23,11 @@
 body, html {
   height: 95%;
   display: grid;
-  background: #181818;
+  background-color: transparent;
   color: white;
+  background-image: url(apt_bg.jpeg);
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 textarea {
@@ -39,8 +42,16 @@ select, input {
   color: black;
 }
 
+.logo {
+  margin-bottom: 20px;
+}
+
 .table-striped > tbody > tr:nth-of-type(odd) {
   background-color: #2d2d2d;
+}
+
+.table-striped > tbody > tr:nth-of-type(even) {
+  background-color: #444;
 }
 
 .table th, .table td {
@@ -70,13 +81,17 @@ select, input {
   font-size: 20px;
 }
 
+.navbar-right.admin-header a {
+  font-size: 16px;
+}
+
 .nav > li > a:hover {
   background-color: transparent;
 }
 
 .navbar li a.current {
   background-color: #ffb204;
-  color: #181818;
+  color: #444;
 }
 
 .orange-button {
@@ -95,4 +110,8 @@ select, input {
 
 .form-control {
   height: 40px;
+}
+
+.glyphicon {
+  font-size: 14px;
 }
