@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20171112190405) do
 
   create_table "admins", force: :cascade do |t|
@@ -48,8 +49,8 @@ ActiveRecord::Schema.define(version: 20171112190405) do
   create_table "transactions", force: :cascade do |t|
     t.integer "amount"
     t.integer "phoneNumber", limit: 8
-    t.integer "provider"
-    t.integer "location"
+    t.string "provider"
+    t.string "location"
     t.integer "status"
     t.datetime "scheduledPickupStartDT"
     t.datetime "scheduledPickupEndDT"
@@ -69,9 +70,9 @@ ActiveRecord::Schema.define(version: 20171112190405) do
     t.string "email"
     t.integer "phone", limit: 8
     t.string "password"
-    t.integer "pref_provider"
+    t.string "pref_provider"
     t.integer "pref_amount"
-    t.integer "pref_location"
+    t.string "pref_location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

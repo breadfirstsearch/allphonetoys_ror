@@ -3,9 +3,9 @@ class CreateTransactions < ActiveRecord::Migration[5.1]
     create_table :transactions do |t|
       t.integer :amount
       t.integer :phoneNumber, :limit => 8
-      t.integer :provider
-      t.integer :location
-      t.integer :status
+      t.string :provider
+      t.string :location
+      t.string :status
       t.datetime :scheduledPickupStartDT
       t.datetime :scheduledPickupEndDT
       t.datetime :messagedPickupDT
