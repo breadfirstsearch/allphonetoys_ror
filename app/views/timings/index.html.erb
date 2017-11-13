@@ -1,0 +1,29 @@
+<div class="col-lg-12 text-right">
+  <%= link_to new_timing_path do %>
+    <span class="new-transaction">+</span></a>
+  <% end %>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Time</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @timings.each do |timing| %>
+      <tr>
+        <td><%= timing.day%></td>
+        <td><%= timing.time %></td>
+        <td>
+          <%= link_to deleteTiming_path(timing), method: "delete" do %>
+            <span class="delete-location">x</span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
