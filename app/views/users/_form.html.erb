@@ -31,11 +31,11 @@
     </div>
 
     <div class="field form-group-condensed">
-      <%= form.select :pref_provider, options_for_select(@providers.map { |obj| [obj['provider'], obj['id']] }, @user.pref_provider), {prompt: 'Select your preferred service provider'}, {class:'form-control', id: 'user_pref_provider', name: 'preferredProvider'}  %>
+      <%= form.select :pref_provider, options_for_select(@providers.map { |obj| [obj['provider'], obj['provider']] }, @user.pref_provider), {prompt: 'Select your preferred service provider'}, class:'form-control', id: 'user_pref_provider'  %>
     </div>
 
     <div class="field form-group">
-      <%= form.select :pref_location, options_for_select(@locations.map { |obj| [obj['location'], obj['id']] }, @user.pref_location), {prompt: 'Select your preferred pickup location'}, {class:'form-control', id: 'user_pref_location', name: 'preferredLocation'}  %>
+      <%= form.select :pref_location,  options_for_select(@locations.map { |obj| [obj['location'], obj['location']] }, @user.pref_location), {prompt: 'Select your preferred pickup location'}, class:'form-control', id: 'user_pref_location' %>
     </div>
 
     <div class="actions">

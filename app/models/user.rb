@@ -19,7 +19,7 @@ class User < ApplicationRecord
   def self.search(search_name, search_phone , search_amount, search_email, search_provider, search_location )
 
     @users = User.all
-    search_name ? @users = User.where('name LIKE ?', "%#{search_name}%").select("CAST(name AS TEXT)") : @users
+    search_name ? @users = User.where('name LIKE ?', "%#{search_name}%") : @users
     search_amount ? @users = @users.where('pref_amount LIKE ?', "%#{search_amount}%")  : @users
     search_phone ? @users = @users.where('phone LIKE ?', "%#{search_phone}%")  : @users
     search_email ? @users = @users.where('email LIKE ?', "%#{search_email}%")  : @users
