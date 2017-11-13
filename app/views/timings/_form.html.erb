@@ -18,6 +18,10 @@
     <%= form.text_field :time, id: :timing_time, class: 'form-control', placeholder: 'Time' %>
   </div>
   <div class="actions form-group">
-    <%= form.submit "Add Timing",  :class=>'btn col-lg-12 orange-button' %>
+    <% if timing.new_record? %>
+      <%= form.submit "Add Timing",  :class=>'btn col-lg-12 orange-button' %>
+    <% else %>
+      <%= form.submit "Update timing",  :class=>'btn col-lg-12 orange-button' %>
+    <% end %>
   </div>
 <% end %>

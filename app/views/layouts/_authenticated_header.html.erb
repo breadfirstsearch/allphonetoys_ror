@@ -11,13 +11,18 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li class="transactions">
-          <%= link_to transactions_path, :class => cp_transactions(transactions_path) do %>
+          <%= link_to transactions_path, :class => cp(transactions_path) do %>
             My transactions
           <% end %>
         </li>
         <li>
           <%= link_to schedulePickup_path, :class => cp(schedulePickup_path) do %>
             Schedule a pickup
+          <% end %>
+        </li>
+        <li>
+          <%= link_to user_timings_path, :class => cp(user_timings_path) do %>
+            Available Timings
           <% end %>
         </li>
         <li>

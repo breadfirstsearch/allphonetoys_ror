@@ -91,7 +91,7 @@ select, input {
 
 .navbar li a.current {
   background-color: #ffb204;
-  color: #181818;
+  color: #444;
 }
 
 .orange-button {
@@ -110,4 +110,8 @@ select, input {
 
 .form-control {
   height: 40px;
+}
+
+.glyphicon {
+  font-size: 14px;
 }

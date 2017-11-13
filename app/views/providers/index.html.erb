@@ -20,9 +20,11 @@
         <td><%= provider.id%></td>
         <td><%= provider.provider %></td>
         <td>
-          <%= link_to deleteProvider_path(provider), method: "delete" do %>
-            <span class="delete-provider">x</span>
-          <% end %>
+          <div class="delete-location">
+            <%= link_to deleteProvider_path(provider), method: "delete" do %>
+              <span class="glyphicon glyphicon-remove"></span>
+            <% end %>
+          </div>
         </td>
       </tr>
     <% end %>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :transactions
   get 'sessions/new'
   resources :users
+  resources :timings
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'sessions#new'
@@ -30,8 +31,12 @@ Rails.application.routes.draw do
   delete '/providers/:id', to: 'providers#destroy', as: 'deleteProvider'
 
   get '/timings', to: 'timings#index'
-  get '/timings/new', to: 'timings#new', as: 'new_timing'
+  get '/timings/new', to: 'timings#new'
   post '/timings', to: 'timings#create'
+  get '/timings/:id/edit', to: 'timings#edit'
+  put '/timings/:id', to: 'timings#update'
   delete '/timings/:id', to: 'timings#destroy', as: 'deleteTiming'
+
+  get '/user-timings', to: 'timings#user_timings', as: 'user_timings'
 
 end
