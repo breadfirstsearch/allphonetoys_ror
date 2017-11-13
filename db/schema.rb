@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171112190405) do
+ActiveRecord::Schema.define(version: 20171113001215) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 20171112190405) do
     t.integer "prefLocation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "email_confirmed", default: false
+    t.string "confirm_token"
   end
 
 end

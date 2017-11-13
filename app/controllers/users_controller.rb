@@ -48,7 +48,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        CustomMailer.registration_confirmation(@user).deliver
+        format.html { redirect_to @user, notice: 'Hooray! Please click on the confirmation link sent to your email before logging in.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -78,6 +79,18 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def confirm_email
+    user = User.find_by_confirm_token(params[:id])
+    if user
+      user.email_activate
+      flash[:success] = "Your email has been confirmed! Please log in to continue."
+      redirect_to login_path
+    else
+      flash[:error] = "Invalid activation token!"
+      redirect_to login_path
     end
   end
 

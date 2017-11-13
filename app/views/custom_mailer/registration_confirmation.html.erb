@@ -1,0 +1,7 @@
+<h2>Welcome <%= @user.name %></h2>
+<p>
+  Thank you for signing up! Confirm your email by clicking the link below
+</p>
+<div>
+  <%= confirm_email_user_url(@user.confirm_token) %>
+</div>

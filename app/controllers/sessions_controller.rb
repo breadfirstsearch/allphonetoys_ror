@@ -19,8 +19,13 @@ class SessionsController < ApplicationController
       log_in_admin admin
       redirect_to adminDashboard_path
     elsif user && user.passwordMatches(params[:session][:password])   #check for a user with the same email id in the database
-      log_in_user user
-      redirect_to user
+      if user.email_confirmed
+        log_in_user user
+        redirect_to user
+      else
+        @loginError = 'Please confirm your email before logging in'
+        render 'new'
+      end
     else
       @loginError = 'Invalid email/password'
       render 'new'

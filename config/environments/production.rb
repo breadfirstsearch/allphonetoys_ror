@@ -62,6 +62,16 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "allphonetoys_ror_#{Rails.env}"
   config.action_mailer.default_url_options = { host: 'allphonetoys.herokuapp.com' }
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address        => "smtp.gmail.com",
+    :port           => 587,
+    :user_name      => "lvchirumamilla@gmail.com",
+    :password       => "bharani1",
+    :authentication => "plain",
+    :enable_starttls_auto => true
+  }
+
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
