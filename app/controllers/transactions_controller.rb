@@ -12,32 +12,10 @@ class TransactionsController < ApplicationController
    else
       redirect_to login_path
    end
-   session[:trans_user_name              ] = params[:name                      ]
-   session[:trans_amount                 ] = params[:amount                    ]
-   session[:trans_phoneNumber            ] = params[:phoneNumber               ]
-   session[:trans_provider               ] = params[:provider                  ]
-   session[:trans_location               ] = params[:location                  ]
-   session[:trans_status                 ] = params[:status                    ]
-   session[:trans_scheduledPickupStartDT ] = params[:scheduledPickupStartDT    ]
-   session[:trans_scheduledPickupEndDT   ] = params[:scheduledPickupEndDT      ]
-   session[:trans_messagedPickupDT       ] = params[:messagedPickupDT          ]
-   session[:trans_pickedUpDT             ] = params[:pickedUpDT                ]
-   session[:trans_rechargeDueDT          ] = params[:rechargeDueDT             ]
-   session[:trans_rechargedDT            ] = params[:rechargedDT               ]
-   session[:trans_remarks                ] = params[:remarks                   ]
 
-    @transactions = @transactions.trans_user_name(session[:trans_user_name])  if session[:trans_user_name].present?
-    @transactions = @transactions.trans_amount(session[:trans_amount]) if session[:trans_amount].present?
-    @transactions = @transactions.trans_phoneNumber(session[:trans_phoneNumber]) if session[:trans_phoneNumber].present?
-    @transactions = @transactions.trans_provider(session[:trans_provider]) if session[:trans_provider].present?
-    @transactions = @transactions.trans_location(session[:trans_location]) if session[:trans_location].present?
-    @transactions = @transactions.trans_status(session[:trans_status]) if session[:trans_status].present?
-    @transactions = @transactions.trans_scheduledPickupStartDT(session[:trans_scheduledPickupStartDT]) if session[:trans_scheduledPickupStartDT].present?
-    @transactions = @transactions.trans_scheduledPickupEndDT(session[:trans_scheduledPickupEndDT]) if session[:trans_scheduledPickupEndDT].present?
-    @transactions = @transactions.trans_messagedPickupDT(session[:trans_messagedPickupDT]) if session[:trans_messagedPickupDT].present?
-    @transactions = @transactions.trans_rechargeDueDT(session[:trans_rechargeDueDT]) if session[:trans_rechargeDueDT].present?
-    @transactions = @transactions.trans_rechargedDT(session[:trans_rechargedDT]) if session[:trans_rechargedDT].present?
-    @transactions = @transactions.trans_remarks(session[:trans_remarks]) if session[:trans_remarks].present?
+   @transactions = Transaction.search(params[:search_name], params[:search_phone] , params[:search_amount], params[:search_status], params[:search_date ])
+
+
 
   end
 
@@ -138,6 +116,6 @@ class TransactionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:amount, :phoneNumber, :provider, :location, :status, :scheduledPickupStartDT, :scheduledPickupEndDT, :messagedPickupDT, :pickedUpDT, :rechargeDueDT, :rechargedDT, :remarks)
+      params.require(:transaction).permit(:amount, :phoneNumber, :provider, :location, :status, :scheduledPickupStartDT, :scheduledPickupEndDT, :messagedPickupDT, :pickedUpDT, :rechargeDueDT, :rechargedDT, :remarks, :search_name, :search_phone , :search_amount, :search_status, :search_date)
     end
 end
