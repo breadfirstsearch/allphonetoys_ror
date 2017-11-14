@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field form-group">
-    <%= form.text_field :day, id: :timing_day, class: 'form-control', placeholder: 'Day' %>
+    <%= form.select :day, options_for_select([['Mon', 'Monday'],['Tue', 'Tuesday'],['Wed', 'Wednesday'],['Thurs', 'Thursday'],['Fri', 'Friday'],['Sat', 'Saturday'],['Sun', 'Sunday']], @timing.day), {prompt: 'Select day'}, class:'form-control', id: 'timing_day'  %>
   </div>
   <div class="field form-group">
     <%= form.text_field :time, id: :timing_time, class: 'form-control', placeholder: 'Time' %>
