@@ -1,0 +1,27 @@
+<%= form_with(model: timing, local: true, class: 'col-lg-5', id: 'location-form') do |form| %>
+  <% if timing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(timing.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+      <ul>
+      <% timing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.select :day, options_for_select([['Mon', 'Monday'],['Tue', 'Tuesday'],['Wed', 'Wednesday'],['Thurs', 'Thursday'],['Fri', 'Friday'],['Sat', 'Saturday'],['Sun', 'Sunday']], @timing.day), {prompt: 'Select day'}, class:'form-control', id: 'timing_day'  %>
+  </div>
+  <div class="field form-group">
+    <%= form.text_field :time, id: :timing_time, class: 'form-control', placeholder: 'Time' %>
+  </div>
+  <div class="actions form-group">
+    <% if timing.new_record? %>
+      <%= form.submit "Add Timing",  :class=>'btn col-lg-12 orange-button' %>
+    <% else %>
+      <%= form.submit "Update timing",  :class=>'btn col-lg-12 orange-button' %>
+    <% end %>
+  </div>
+<% end %>

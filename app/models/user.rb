@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   validates :password,  presence: true, length: { maximum: 50 }
 
-  validates :prefAmount,numericality: { only_integer: true, less_than_or_equal_to:1000 }
+  validates :pref_amount,numericality: { only_integer: true, less_than_or_equal_to:1000 }
 
   validates :email, presence: true, uniqueness: true
   validates_format_of :email, :with => Devise::email_regexp
@@ -16,13 +16,17 @@ class User < ApplicationRecord
     enteredPassword.eql?self.password
   end
 
-  scope :user_name, -> (name) { where "lower(name) like ?", "%#{name.downcase}%" }
-  scope :user_email, -> (email) { where "lower(email) like ?", "%#{email.downcase}%" }
-  scope :user_phone, -> (phone) { where "phone = ?", phone }
-  scope :user_pref_amount, -> (prefAmount) { where "prefAmount = ?", prefAmount }
-  scope :user_pref_provider, -> (prefProvider) { where "prefProvider = ?", prefProvider }
-  scope :user_pref_location, -> (prefLocation) { where "prefLocation = ?", prefLocation }
-
+  def self.search(search_name, search_phone , search_amount, search_email, search_provider, search_location )
+    
+    @users = User.all
+    search_name ? @users = User.where('CAST(name as TEXT) LIKE ?', "%#{search_name}%") : @users
+    search_amount ? @users = @users.where('CAST(pref_amount as TEXT) LIKE ?', "%#{search_amount}%")  : @users
+    search_phone ? @users = @users.where('CAST(phone as TEXT)  LIKE ?', "%#{search_phone}%")  : @users
+    search_email ? @users = @users.where('CAST(email as TEXT)  LIKE ?', "%#{search_email}%")  : @users
+    search_provider ? @users = @users.where('CAST(pref_provider as TEXT)  LIKE ?', "%#{search_provider}%")  : @users
+    search_location ? @users = @users.where('CAST(pref_location as TEXT) LIKE ?', "%#{search_location}%")  : @users
+  end
+  
   def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
