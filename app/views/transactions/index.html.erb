@@ -6,77 +6,16 @@
   <% end %>
 </div>
 
-<%= form_with(url: transaction_index_path, local: true) do |form| %>
-
-    <table>
-      <tr>
-        <td> <%= form.label :"Name (contains)" %>
-          <%= form.text_field :name, id: :name, value: session[:trans_user_name] %> </td>
-
-        <td><%= form.label :"Amount" %>
-          <%= form.text_field :amount, id: :amount, value: session[:trans_amount] %> </td>
-
-        <td>
-          <%= form.label :"Phone number" %>
-          <%= form.text_field :phoneNumber, id: :phoneNumber, value: session[:trans_phoneNumber] %>
-        </td>
-
-      </tr>
-
-
-      <tr>
-
-        <td><%= form.label :"Transaction Status" %>
-          <%= form.text_field :status, id: :status, value: session[:trans_status] %> </td>
-        <td> <%= form.label :"Location" %>
-          <%= form.text_field :location, id: :location, value: session[:trans_location] %> </td>
-
-
-        <td>
-          <%= form.label :"Provider" %>
-          <%= form.number_field :provider, id: :provider, value: session[:trans_provider] %>
-        </td>
-
-        <% if false %>
-
-        <td>
-          <%= form.label :"Scheduled Pickup Start DateTime" %>
-          <%= form.text_field :scheduledPickupStartDT, id: :scheduledPickupStartDT, value: session[:trans_scheduledPickupStartDT] %>
-        </td>
-
-        <td> <%= form.label :"Scheduled Pickup End DateTime " %>
-          <%= form.number_field :scheduledPickupEndDT, id: :scheduledPickupEndDT, value: session[:trans_scheduledPickupEndDT] %> </td>
-
-      </tr>
-
-
-
-      <tr>
-        <td> <%= form.label :"Messaged Pickup DateTime " %>
-          <%= form.text_field :messagedPickupDT, id: :messagedPickupDT, value: session[:trans_messagedPickupDT] %> </td>
-
-        <td><%= form.label :"Picked Up DateTime " %>
-          <%= form.text_field :pickedUpDT, id: :pickedUpDT, value: session[:trans_pickedUpDT] %> </td>
-
-        <td>
-          <%= form.label :"Recharge Due DateTime " %>
-          <%= form.text_field :rechargeDueDT, id: :rechargeDueDT, value: session[:trans_rechargeDueDT] %>
-        </td>
-
-        <td> <%= form.label :"Recharged DateTime  " %>
-          <%= form.number_field :rechargedDT, id: :rechargedDT, value: session[:trans_rechargedDT] %> </td>
-
-        <% end %>
-      </tr>
-
-    </table>
-
-    <h1>   </h1>
-    <div class="actions">
-      <%= form.submit "Apply"%>
-    </div>
-
-
+<%= form_tag transactions_path , :method => 'get' do %>
+    <p>
+      <b>Search transactions by :</b>
+      <%= text_field_tag :search_name, params[:search_name] ,    placeholder: 'Name' %>
+      <%= text_field_tag :search_phone, params[:search_phone],   placeholder: 'Phone' %>
+      <%= text_field_tag :search_amount, params[:search_amount], placeholder: 'Amount' %>
+      <%= text_field_tag :search_status, params[:search_status], placeholder: 'Status' %>
+      <%= text_field_tag :search_date, params[:search_date], placeholder: 'date' %>
+      <%= submit_tag 'Search', :name => nil %>
+    </p>
 <% end %>
 
 <table class="table table-striped">

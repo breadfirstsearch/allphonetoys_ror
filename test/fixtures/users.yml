@@ -5,15 +5,15 @@ one:
   email: MyString
   phone: 
   password: MyString
-  prefProvider: 1
-  prefAmount: 1
-  prefLocation: 1
+  pref_provider: 1
+  pref_amount: 1
+  pref_location: 1
 
 two:
   name: MyString
   email: MyString
   phone: 
   password: MyString
-  prefProvider: 1
-  prefAmount: 1
-  prefLocation: 1
+  pref_provider: 1
+  pref_amount: 1
+  pref_location: 1

@@ -11,7 +11,7 @@ Given /^I am signed in$/ do
   fill_in 'user_email', :with => 'abc@test.com'
   fill_in 'user_phone', :with => '9876543210'
   fill_in 'user_password', :with => 'qwerty'
-  fill_in 'user_prefAmount', :with => '23'
+  fill_in 'user_pref_amount', :with => '23'
   click_button 'Sign Up'
   if page.respond_to? :should
     page.should have_content('User was successfully created.')

@@ -10,7 +10,7 @@
   <% end %>
 
   <div class="field form-group-condensed">
-    <%= form.number_field :amount, :value=>@loggedin_user.prefAmount, id: :transaction_amount, class: 'form-control', placeholder: '$ Amount' %>
+    <%= form.number_field :amount, :value=>@loggedin_user.pref_amount, id: :transaction_amount, class: 'form-control', placeholder: '$ Amount' %>
   </div>
 
   <div class="field form-group-condensed">
@@ -18,11 +18,11 @@
   </div>
 
   <div class="field form-group-condensed">
-    <%= form.select :provider, options_for_select(@providers.map { |obj| [obj['provider'], obj['id']] }, @loggedin_user.prefProvider), {prompt: 'Select your service provider'}, {id: :transaction_provider, class: 'form-control'} %>
+    <%= form.select :provider, options_for_select(@providers.map { |obj| [obj['provider'], obj['provider']] }, @loggedin_user.pref_provider), {prompt: 'Select your service provider'}, {id: :transaction_provider, class: 'form-control'} %>
   </div>
 
   <div class="field form-group-condensed">
-    <%= form.select :location, options_for_select(@locations.map { |obj| [obj['location'], obj['id']] }, @loggedin_user.prefLocation), {prompt: 'Select location'}, {id: :transaction_location, class: 'form-control'} %>
+    <%= form.select :location, options_for_select(@locations.map { |obj| [obj['location'], obj['location']] }, @loggedin_user.pref_location), {prompt: 'Select location'}, {id: :transaction_location, class: 'form-control'} %>
   </div>
 
   <div class="field form-group-condensed">
