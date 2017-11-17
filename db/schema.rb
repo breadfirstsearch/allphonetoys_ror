@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171112190405) do
+ActiveRecord::Schema.define(version: 20171113215330) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20171112190405) do
     t.integer "phoneNumber", limit: 8
     t.string "provider"
     t.string "location"
-    t.integer "status"
+    t.string "status"
     t.datetime "scheduledPickupStartDT"
     t.datetime "scheduledPickupEndDT"
     t.datetime "messagedPickupDT"

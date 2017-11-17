@@ -13,9 +13,9 @@ class Transaction < ApplicationRecord
 
     @transactions = Transaction.all
     search_name ? @transactions = Transaction.joins(:user).where('CAST(name as TEXT) LIKE ?', "%#{search_name}%") : @transactions
-    search_amount ? @transactions = @transactions.where('CAST(amount as TEXT) LIKE ?', "%#{search_amount}%")  : @transactions
-    search_phone ? @transactions = @transactions.where('CAST(phoneNumber as TEXT) LIKE ?', "%#{search_phone}%")  : @transactions
-    search_status ? @transactions = @transactions.where('CAST(status as TEXT) LIKE ?', "%#{search_status}%")  : @transactions
+    search_amount ? @transactions = @transactions.where('CAST(transactions.amount as TEXT) LIKE ?', "%#{search_amount}%")  : @transactions
+    search_phone ? @transactions = @transactions.where('CAST(transactions.phoneNumber as TEXT) LIKE ?', "%#{search_phone}%")  : @transactions
+    search_status ? @transactions = @transactions.where('CAST(transactions.status as TEXT) LIKE ?', "%#{search_status}%")  : @transactions
     #search_date ? @transactions = @transactions.where('scheduledPickupStartDT||scheduledPickupEndDT||messagedPickupDT||pickedUpDT||rechargeDueDT||rechargedDT LIKE ?', "%#{search_date}%")  : @transactions
   end
 
