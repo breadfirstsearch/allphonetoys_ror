@@ -17,7 +17,7 @@
     <% @timings.each do |timing| %>
       <tr>
         <td><%= timing.day%></td>
-        <td><%= timing.time %></td>
+        <td><%= timing.hours + ":" + timing.minutes + " " + timing.ampm %></td>
         <td>
           <div class="delete-location">
             <%= link_to edit_timing_path(timing), method: "get" do %>
