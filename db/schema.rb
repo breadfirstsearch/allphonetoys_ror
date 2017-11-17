@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20171112190405) do
+ActiveRecord::Schema.define(version: 20171117212244) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -44,6 +43,9 @@ ActiveRecord::Schema.define(version: 20171112190405) do
     t.string "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "hours"
+    t.string "minutes"
+    t.string "ampm"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -51,7 +53,7 @@ ActiveRecord::Schema.define(version: 20171112190405) do
     t.integer "phoneNumber", limit: 8
     t.string "provider"
     t.string "location"
-    t.integer "status"
+    t.string "status"
     t.datetime "scheduledPickupStartDT"
     t.datetime "scheduledPickupEndDT"
     t.datetime "messagedPickupDT"
