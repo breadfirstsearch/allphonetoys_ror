@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20171113215330) do
 
   create_table "transactions", force: :cascade do |t|
     t.integer "amount"
-    t.integer "phoneNumber", limit: 8
+    t.integer "phone_number", limit: 8
     t.string "provider"
     t.string "location"
     t.string "status"

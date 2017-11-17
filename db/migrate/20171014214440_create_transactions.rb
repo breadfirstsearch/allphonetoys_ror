@@ -2,7 +2,7 @@ class CreateTransactions < ActiveRecord::Migration[5.1]
   def change
     create_table :transactions do |t|
       t.integer :amount
-      t.integer :phoneNumber, :limit => 8
+      t.integer :phone_number, :limit => 8
       t.string :provider
       t.string :location
       t.string :status
