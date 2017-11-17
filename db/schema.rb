@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20171117212244) do
 
   create_table "transactions", force: :cascade do |t|
     t.integer "amount"
-    t.integer "phoneNumber", limit: 8
+    t.integer "phone_number", limit: 8
     t.string "provider"
     t.string "location"
     t.string "status"
@@ -77,6 +77,9 @@ ActiveRecord::Schema.define(version: 20171117212244) do
     t.string "pref_location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "auth_token"
+    t.string "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end

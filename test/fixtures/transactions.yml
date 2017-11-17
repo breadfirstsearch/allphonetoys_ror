@@ -2,7 +2,7 @@
 
 one:
   amount: 1
-  phoneNumber: 1
+  phone_number: 1
   provider: 1
   location: 1
   status: 1
@@ -16,7 +16,7 @@ one:
 
 two:
   amount: 1
-  phoneNumber: 1
+  phone_number: 1
   provider: 1
   location: 1
   status: 1

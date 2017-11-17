@@ -17,7 +17,7 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create transaction" do
     assert_difference('Transaction.count') do
-      post transactions_url, params: { transaction: { amount: @transaction.amount, location: @transaction.location, messagedPickupDT: @transaction.messagedPickupDT, phoneNumber: @transaction.phoneNumber, pickedUpDT: @transaction.pickedUpDT, provider: @transaction.provider, rechargeDueDT: @transaction.rechargeDueDT, rechargedDT: @transaction.rechargedDT, remarks: @transaction.remarks, scheduledPickupEndDT: @transaction.scheduledPickupEndDT, scheduledPickupStartDT: @transaction.scheduledPickupStartDT, status: @transaction.status } }
+      post transactions_url, params: { transaction: { amount: @transaction.amount, location: @transaction.location, messagedPickupDT: @transaction.messagedPickupDT, phone_number: @transaction.phone_number, pickedUpDT: @transaction.pickedUpDT, provider: @transaction.provider, rechargeDueDT: @transaction.rechargeDueDT, rechargedDT: @transaction.rechargedDT, remarks: @transaction.remarks, scheduledPickupEndDT: @transaction.scheduledPickupEndDT, scheduledPickupStartDT: @transaction.scheduledPickupStartDT, status: @transaction.status } }
     end
 
     assert_redirected_to transaction_url(Transaction.last)
@@ -34,7 +34,7 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update transaction" do
-    patch transaction_url(@transaction), params: { transaction: { amount: @transaction.amount, location: @transaction.location, messagedPickupDT: @transaction.messagedPickupDT, phoneNumber: @transaction.phoneNumber, pickedUpDT: @transaction.pickedUpDT, provider: @transaction.provider, rechargeDueDT: @transaction.rechargeDueDT, rechargedDT: @transaction.rechargedDT, remarks: @transaction.remarks, scheduledPickupEndDT: @transaction.scheduledPickupEndDT, scheduledPickupStartDT: @transaction.scheduledPickupStartDT, status: @transaction.status } }
+    patch transaction_url(@transaction), params: { transaction: { amount: @transaction.amount, location: @transaction.location, messagedPickupDT: @transaction.messagedPickupDT, phone_number: @transaction.phone_number, pickedUpDT: @transaction.pickedUpDT, provider: @transaction.provider, rechargeDueDT: @transaction.rechargeDueDT, rechargedDT: @transaction.rechargedDT, remarks: @transaction.remarks, scheduledPickupEndDT: @transaction.scheduledPickupEndDT, scheduledPickupStartDT: @transaction.scheduledPickupStartDT, status: @transaction.status } }
     assert_redirected_to transaction_url(@transaction)
   end
 

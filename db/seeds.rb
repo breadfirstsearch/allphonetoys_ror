@@ -24,7 +24,7 @@ u.save
 
 t=Transaction.new
 t.amount=19
-t.phoneNumber=1234567890
+t.phone_number=1234567890
 t.provider=1
 t.location=3
 t.status=2
@@ -33,7 +33,7 @@ t.save
 
 t=Transaction.new
 t.amount=45
-t.phoneNumber=1234567890
+t.phone_number=1234567890
 t.provider=1
 t.location=3
 t.status=1
@@ -52,7 +52,7 @@ u.save
 
 t=Transaction.new
 t.amount=23
-t.phoneNumber=1234567891
+t.phone_number=1234567891
 t.provider=1
 t.location=3
 t.status=2
@@ -71,7 +71,7 @@ u.save
 
 t=Transaction.new
 t.amount=26
-t.phoneNumber=1234567892
+t.phone_number=1234567892
 t.provider=3
 t.location=1
 t.status=3
@@ -90,7 +90,7 @@ u.save
 
 t=Transaction.new
 t.amount=45
-t.phoneNumber=1234567893
+t.phone_number=1234567893
 t.provider=3
 t.location=1
 t.status=3
@@ -99,7 +99,7 @@ t.save
 
 t=Transaction.new
 t.amount=100
-t.phoneNumber=1234567893
+t.phone_number=1234567893
 t.provider=3
 t.location=1
 t.status=1
@@ -120,7 +120,7 @@ u.save
 
 t=Transaction.new
 t.amount=45
-t.phoneNumber=1234567894
+t.phone_number=1234567894
 t.provider=2
 t.location=1
 t.status=1
