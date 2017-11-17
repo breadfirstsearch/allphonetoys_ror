@@ -20,5 +20,7 @@ class ApplicationController < ActionController::Base
     end
     @providers = Provider.find_by_sql("SELECT * FROM providers")
     @locations = Location.find_by_sql("SELECT * FROM locations")
+    @hours = [['1','01'],['2','02'],['3','03'],['4','04'],['5','05'],['6','06'],['7','07'],['8','08'],['9','09'],['10','10'],['11','11'],['12','12']]
+    @minutes = [['00','00'],['15','15'],['30','30'],['45','45']]
   end
 end
