@@ -25,7 +25,7 @@ class TransactionsController < ApplicationController
   end
 
   def todays_recharges
-    @transactions = Transaction.where("DATE(\"rechargeDueDT\") = ?", Date.today)#filter only transactions to be recharged today
+    @transactions = Transaction.where("(\"rechargeDate\") = ?", Date.today.strftime("%d %b %Y"))#filter only transactions to be recharged today
     @transactions = @transactions.trans_status_recharges() #Filter only transactions with status =2 or 3
   end
 
@@ -38,10 +38,14 @@ class TransactionsController < ApplicationController
   def new
     @transaction = Transaction.new
     @timingsList = []
+    @datesList = []
     @timings = Timing.find_by_sql("SELECT day, hours, minutes, ampm FROM timings")
     @timings.each do |timing|
       timing.day = date_of_next(timing.day).strftime("%d %b %Y") + " - " + timing.hours + ":" + timing.minutes + " " + timing.ampm
       @timingsList.push([timing.day, timing.day])
+    end
+    for i in 1..10
+      @datesList.push([(Date.today+i).strftime("%d %b %Y"), (Date.today+i).strftime("%d %b %Y")])
     end
   end
 
@@ -122,6 +126,6 @@ class TransactionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:amount, :phone_number, :provider, :location, :status, :scheduledPickupStartDT, :scheduledPickupEndDT, :messagedPickupDT, :pickedUpDT, :rechargeDueDT, :rechargedDT, :remarks, :search_name, :search_phone , :search_amount, :search_status, :search_date, :pickupDate)
+      params.require(:transaction).permit(:amount, :phone_number, :provider, :location, :status, :scheduledPickupStartDT, :scheduledPickupEndDT, :messagedPickupDT, :pickedUpDT, :rechargeDueDT, :rechargedDT, :remarks, :search_name, :search_phone , :search_amount, :search_status, :search_date, :pickupDate, :rechargeDate)
     end
 end

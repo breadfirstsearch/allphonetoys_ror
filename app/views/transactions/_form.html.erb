@@ -30,7 +30,7 @@
   </div>
 
   <div class="field form-group-condensed">
-    <%= form.datetime_select :rechargeDueDT, id: :transaction_rechargeDueDT, class: 'form-control' %>
+    <%= form.select :rechargeDate, options_for_select(@datesList), {prompt: 'When should we recharge?'}, class:'form-control', id: 'transaction_rechargeDate'  %>
   </div>
 
   <div class="field form-group">
