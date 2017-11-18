@@ -23,4 +23,10 @@ class ApplicationController < ActionController::Base
     @hours = [['1','01'],['2','02'],['3','03'],['4','04'],['5','05'],['6','06'],['7','07'],['8','08'],['9','09'],['10','10'],['11','11'],['12','12']]
     @minutes = [['00','00'],['15','15'],['30','30'],['45','45']]
   end
+
+  def date_of_next(day)
+    date = Date.parse(day)
+    delta = date > Date.today ? 0 : 7
+    date + delta
+  end
 end
