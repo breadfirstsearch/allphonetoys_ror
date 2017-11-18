@@ -6,7 +6,9 @@
     <th>Phonenumber</th>
     <th>Provider</th>
     <th>Location</th>
+    <th>Pickup Date</th>
     <th>Status</th>
+    <th>Action</th>
 
     <% if false %>
         <th>Scheduledpickupstartdt</th>
@@ -36,10 +38,11 @@
        <td><%= transaction.phone_number %></td>
         <td><%= transaction.provider %></td>
         <td><%= transaction.location %></td>
+        <td><%= transaction.pickupDate %></td>
         <td><%= transaction.status %></td>
         <td>
           <%= link_to do_pickup_path(transaction), method: "delete" do %>
-              <span class="delete-provider">x</span>
+              <span class="delete-location">x</span>
           <% end %>
         </td>
         <% if false %>

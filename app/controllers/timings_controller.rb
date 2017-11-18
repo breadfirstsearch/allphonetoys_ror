@@ -63,12 +63,6 @@ class TimingsController < ApplicationController
       params.require(:timing).permit(:day, :hours, :minutes, :ampm)
     end
 
-    def date_of_next(day)
-      date = Date.parse(day)
-      delta = date > Date.today ? 0 : 7
-      date + delta
-    end
-
     def format_time(time)
       startTime = time.length <= 2 ? time + ":00" : time
       endTime = time.to_i + 2
