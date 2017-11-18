@@ -26,8 +26,9 @@
       <th>Phonenumber</th>
       <th>Provider</th>
       <th>Location</th>
-      <th>Status</th>
       <th>Pickup Date</th>
+      <th>Recharge on</th>
+      <th>Status</th>
 
       <% if false %>
       <th>Scheduledpickupstartdt</th>
@@ -50,8 +51,9 @@
         <td><%= transaction.phone_number %></td>
         <td><%= transaction.provider %></td>
         <td><%= transaction.location %></td>
-        <td><%= transaction.status %></td>
         <td><%= transaction.pickupDate %></td>
+        <td><%= transaction.rechargeDate %></td>
+        <td><%= transaction.status %></td>
         <% if false %>
         <td><%= transaction.scheduledPickupStartDT %></td>
         <td><%= transaction.scheduledPickupEndDT %></td>
