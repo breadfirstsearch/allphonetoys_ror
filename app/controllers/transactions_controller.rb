@@ -48,7 +48,7 @@ class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new(transaction_params)
     @transaction.update(user_id: session[:user_id])
-    @transaction.update(status: 1)
+    @transaction.update(status: 'Scheduled')
 
 
     respond_to do |format|
@@ -88,10 +88,11 @@ class TransactionsController < ApplicationController
 
   def do_pickup
     transaction = Transaction.find(params[:id])
-    if (transaction.status == 1)
-      transaction.status=2 #status=picked up
-    elsif (transaction.status == 2)
-      transaction.status = 1
+
+    if (transaction.status == 'Scheduled')
+      transaction.status='Picked Up' #status=picked up
+    elsif (transaction.status == 'Picked Up')
+      transaction.status = 'Scheduled'
     end
     transaction.save
     redirect_back fallback_location: root_path
@@ -99,10 +100,10 @@ class TransactionsController < ApplicationController
 
   def do_recharge
     transaction = Transaction.find(params[:id])
-    if (transaction.status == 2)
-      transaction.status=3 #status=recharged
-    elsif (transaction.status == 3)
-      transaction.status = 2
+    if (transaction.status == 'Picked Up')
+      transaction.status='Recharged' #status=recharged
+    elsif (transaction.status == 'Recharged')
+      transaction.status = 'Picked Up'
     end
     transaction.save
     redirect_back fallback_location: root_path
