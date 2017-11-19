@@ -99,6 +99,8 @@ class TransactionsController < ApplicationController
 
     if (transaction.status == 'Scheduled')
       transaction.status='Picked Up' #status=picked up
+      carrierEmail = @@carrierFile['carriers'][transaction.provider.downcase]['value'] #get the sms email address for this provider
+      SmsMailer.send_receipt(transaction,carrierEmail).deliver
     elsif (transaction.status == 'Picked Up')
       transaction.status = 'Scheduled'
     end
