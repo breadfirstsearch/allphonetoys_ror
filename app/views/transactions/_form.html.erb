@@ -26,17 +26,11 @@
   </div>
 
   <div class="field form-group-condensed">
-    <label for="scheduledPickupStartDT">scheduledPickupStartDT</label>
-    <%= form.datetime_select :scheduledPickupStartDT, id: :transaction_scheduledPickupStartDT, class: 'form-control', label: 'scheduledPickupStartDT' %>
+    <%= form.select :pickupDate, options_for_select(@timingsList), {prompt: 'Select a pickup date'}, class:'form-control', id: 'transaction_pickupDate'  %>
   </div>
 
   <div class="field form-group-condensed">
-    <label for="scheduledPickupEndDT">scheduledPickupEndDT</label>
-    <%= form.datetime_select :scheduledPickupEndDT, id: :transaction_scheduledPickupEndDT, class: 'form-control', disabled: 'true' %>
-  </div>
-
-  <div class="field form-group-condensed">
-    <%= form.datetime_select :rechargeDueDT, id: :transaction_rechargeDueDT, class: 'form-control' %>
+    <%= form.select :rechargeDate, options_for_select(@datesList), {prompt: 'When should we recharge?'}, class:'form-control', id: 'transaction_rechargeDate'  %>
   </div>
 
   <div class="field form-group">

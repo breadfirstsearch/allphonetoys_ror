@@ -14,19 +14,17 @@ class TransactionsController < ApplicationController
    end
 
    @transactions = Transaction.search(params[:search_name], params[:search_phone] , params[:search_amount], params[:search_status], params[:search_date ])
-
-
-
   end
 
   def todays_pickups
-    @transactions = Transaction.where("DATE(\"scheduledPickupStartDT\") = ?", Date.today) #Filter only transactions to be picked up today
-    @transactions = @transactions.trans_status_pickups() #Filter only transactions with status =1 or 2
+    @@carrierFile = YAML.load(File.read(File.expand_path('../../../config/sms-easy.yml', __FILE__)))
+    @transactions = Transaction.where("SUBSTR(\"pickupDate\", 1, 11) = ?", Date.today.strftime("%d %b %Y")) #Filter only transactions to be picked up today
+    @transactions = @transactions.trans_status_pickups() #Filter only transactions with status =scheduled or picked up
   end
 
   def todays_recharges
-    @transactions = Transaction.where("DATE(\"rechargeDueDT\") = ?", Date.today)#filter only transactions to be recharged today
-    @transactions = @transactions.trans_status_recharges() #Filter only transactions with status =2 or 3
+    @transactions = Transaction.where("(\"rechargeDate\") = ?", Date.today.strftime("%d %b %Y"))#filter only transactions to be recharged today
+    @transactions = @transactions.trans_status_recharges() #Filter only transactions with status =picked up or recharged
   end
 
   # GET /transactions/1
@@ -37,6 +35,16 @@ class TransactionsController < ApplicationController
   # GET /transactions/new
   def new
     @transaction = Transaction.new
+    @timingsList = []
+    @datesList = []
+    @timings = Timing.find_by_sql("SELECT day, hours, minutes, ampm FROM timings")
+    @timings.each do |timing|
+      timing.day = date_of_next(timing.day).strftime("%d %b %Y") + " - " + timing.hours + ":" + timing.minutes + " " + timing.ampm
+      @timingsList.push([timing.day, timing.day])
+    end
+    for i in 1..10
+      @datesList.push([(Date.today+i).strftime("%d %b %Y"), (Date.today+i).strftime("%d %b %Y")])
+    end
   end
 
   # GET /transactions/1/edit
@@ -117,6 +125,6 @@ class TransactionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:amount, :phone_number, :provider, :location, :status, :scheduledPickupStartDT, :scheduledPickupEndDT, :messagedPickupDT, :pickedUpDT, :rechargeDueDT, :rechargedDT, :remarks, :search_name, :search_phone , :search_amount, :search_status, :search_date)
+      params.require(:transaction).permit(:amount, :phone_number, :provider, :location, :status, :scheduledPickupStartDT, :scheduledPickupEndDT, :messagedPickupDT, :pickedUpDT, :rechargeDueDT, :rechargedDT, :remarks, :search_name, :search_phone , :search_amount, :search_status, :search_date, :pickupDate, :rechargeDate)
     end
 end

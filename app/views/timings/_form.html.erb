@@ -14,8 +14,16 @@
   <div class="field form-group">
     <%= form.select :day, options_for_select([['Mon', 'Monday'],['Tue', 'Tuesday'],['Wed', 'Wednesday'],['Thurs', 'Thursday'],['Fri', 'Friday'],['Sat', 'Saturday'],['Sun', 'Sunday']], @timing.day), {prompt: 'Select day'}, class:'form-control', id: 'timing_day'  %>
   </div>
-  <div class="field form-group">
-    <%= form.text_field :time, id: :timing_time, class: 'form-control', placeholder: 'Time' %>
+  <div class="field form-group row">
+    <div class="col-lg-4">
+      <%= form.select :hours, options_for_select(@hours, @timing.hours), {prompt: 'hh'}, class:'form-control', id: 'timing_hours'  %>
+    </div>
+    <div class="col-lg-4">
+      <%= form.select :minutes, options_for_select(@minutes, @timing.minutes), {prompt: 'mm'}, class:'form-control', id: 'timing_minutes'  %>
+    </div>
+    <div class="col-lg-4">
+      <%= form.select :ampm, options_for_select([['am', 'am'],['pm', 'pm']], @timing.ampm), {}, class:'form-control', id: 'timing_ampm'  %>
+    </div>
   </div>
   <div class="actions form-group">
     <% if timing.new_record? %>

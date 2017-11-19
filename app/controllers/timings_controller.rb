@@ -9,7 +9,6 @@ class TimingsController < ApplicationController
     @timings = Timing.all
     @timings.each do |timing|
       timing.date = date_of_next(timing.day)
-      timing.time = format_time(timing.time)
     end
     @timings = @timings.sort_by &:date
   end
@@ -38,7 +37,7 @@ class TimingsController < ApplicationController
 
   def update
     @timing = Timing.find(params[:id])
-    
+
     respond_to do |format|
       if @timing.update(timing_params)
         format.html { redirect_to timings_path, notice: 'Timing was successfully updated.' }
@@ -61,13 +60,7 @@ class TimingsController < ApplicationController
   private
 
     def timing_params
-      params.require(:timing).permit(:day, :time)
-    end
-
-    def date_of_next(day)
-      date = Date.parse(day)
-      delta = date > Date.today ? 0 : 7
-      date + delta
+      params.require(:timing).permit(:day, :hours, :minutes, :ampm)
     end
 
     def format_time(time)
