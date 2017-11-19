@@ -5,8 +5,8 @@ class Transaction < ApplicationRecord
   validates :phone_number, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1000000000 }, length: { is: 10 }
 
 
-  scope :trans_status_pickups                   , -> (                         ) { where "status                      = ? or status = ?",1,2 }
-  scope :trans_status_recharges                   , -> (                         ) { where "status                      = ? or status = ?",2,3 }
+  scope :trans_status_pickups                   , -> (                         ) { where "status                      LIKE ? or status LIKE ?",'Scheduled','Picked Up' }
+  scope :trans_status_recharges                   , -> (                         ) { where "status                      LIKE ? or status LIKE ?",'Picked Up','Recharged' }
 
 
   def self.search(search_name, search_phone , search_amount, search_status, search_date )

@@ -14,19 +14,17 @@ class TransactionsController < ApplicationController
    end
 
    @transactions = Transaction.search(params[:search_name], params[:search_phone] , params[:search_amount], params[:search_status], params[:search_date ])
-
-
-
   end
 
   def todays_pickups
+    @@carrierFile = YAML.load(File.read(File.expand_path('../../../config/sms-easy.yml', __FILE__)))
     @transactions = Transaction.where("SUBSTR(\"pickupDate\", 1, 11) = ?", Date.today.strftime("%d %b %Y")) #Filter only transactions to be picked up today
-    @transactions = @transactions.trans_status_pickups() #Filter only transactions with status =1 or 2
+    @transactions = @transactions.trans_status_pickups() #Filter only transactions with status =scheduled or picked up
   end
 
   def todays_recharges
     @transactions = Transaction.where("(\"rechargeDate\") = ?", Date.today.strftime("%d %b %Y"))#filter only transactions to be recharged today
-    @transactions = @transactions.trans_status_recharges() #Filter only transactions with status =2 or 3
+    @transactions = @transactions.trans_status_recharges() #Filter only transactions with status =picked up or recharged
   end
 
   # GET /transactions/1
@@ -58,7 +56,7 @@ class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new(transaction_params)
     @transaction.update(user_id: session[:user_id])
-    @transaction.update(status: 1)
+    @transaction.update(status: 'Scheduled')
 
 
     respond_to do |format|
@@ -98,10 +96,13 @@ class TransactionsController < ApplicationController
 
   def do_pickup
     transaction = Transaction.find(params[:id])
-    if (transaction.status == 1)
-      transaction.status=2 #status=picked up
-    elsif (transaction.status == 2)
-      transaction.status = 1
+
+    if (transaction.status == 'Scheduled')
+      transaction.status='Picked Up' #status=picked up
+      carrierEmail = @@carrierFile['carriers'][transaction.provider.downcase]['value'] #get the sms email address for this provider
+      SmsMailer.send_receipt(transaction,carrierEmail).deliver
+    elsif (transaction.status == 'Picked Up')
+      transaction.status = 'Scheduled'
     end
     transaction.save
     redirect_back fallback_location: root_path
@@ -109,10 +110,10 @@ class TransactionsController < ApplicationController
 
   def do_recharge
     transaction = Transaction.find(params[:id])
-    if (transaction.status == 2)
-      transaction.status=3 #status=recharged
-    elsif (transaction.status == 3)
-      transaction.status = 2
+    if (transaction.status == 'Picked Up')
+      transaction.status='Recharged' #status=recharged
+    elsif (transaction.status == 'Recharged')
+      transaction.status = 'Picked Up'
     end
     transaction.save
     redirect_back fallback_location: root_path
