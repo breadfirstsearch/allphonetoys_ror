@@ -86,7 +86,7 @@ config.action_mailer.smtp_settings = {
     :authentication => "plain",
     :enable_starttls_auto => true,
     :user_name => "habib1.baig@gmail.com",
-    :password => "Alpacino1!"
+    :password => "Alpacino6!"
   }
 
   # Send deprecation notices to registered listeners.
