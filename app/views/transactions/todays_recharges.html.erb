@@ -26,9 +26,9 @@
 
   <tbody>
   <% @transactions.each do |transaction| %>
-      <% if transaction.status==2 %>
+      <% if transaction.status=='Picked Up' %>
           <tr style="color:white">
-      <% elsif transaction.status==3 %>
+      <% elsif transaction.status=='Recharged' %>
           <tr style="color:black">
       <% else %>
           <tr>
