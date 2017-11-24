@@ -13,7 +13,7 @@ class TransactionsController < ApplicationController
       redirect_to login_path
    end
 
-   @transactions = Transaction.search(params[:search_name], params[:search_phone] , params[:search_amount], params[:search_status], params[:search_date ])
+   @transactions = @transactions.search(params[:search_name], params[:search_phone] , params[:search_amount], params[:search_status], params[:search_date ])
   end
 
   def todays_pickups

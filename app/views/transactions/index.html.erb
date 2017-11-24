@@ -9,7 +9,9 @@
 <%= form_tag transactions_path , :method => 'get' do %>
     <p>
       <b>Search transactions by :</b>
-      <%= text_field_tag :search_name, params[:search_name] ,    placeholder: 'Name' %>
+      <% if current_admin %>
+          <%= text_field_tag :search_name, params[:search_name] ,    placeholder: 'Name' %>
+      <% end %>
       <%= text_field_tag :search_phone, params[:search_phone],   placeholder: 'Phone' %>
       <%= text_field_tag :search_amount, params[:search_amount], placeholder: 'Amount' %>
       <%= text_field_tag :search_status, params[:search_status], placeholder: 'Status' %>
