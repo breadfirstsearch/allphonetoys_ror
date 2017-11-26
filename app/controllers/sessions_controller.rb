@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def new
     if current_user
       user = User.find(session[:user_id])
-      redirect_to user_path(user)
+      redirect_to schedulePickup_path
     elsif current_admin
       redirect_to adminDashboard_path
     end
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
     admin = Admin.find_by(email: params[:session][:email].downcase)
     user = User.find_by(email: params[:session][:email].downcase)
-    
+
     if admin && admin.passwordMatches(params[:session][:password])
       log_in_admin admin
       redirect_to adminDashboard_path
@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
         cookies[:auth_token]=user.auth_token
       end
       log_in_user user
-      redirect_to user
+      redirect_to schedulePickup_path
     else
       @loginError = 'Invalid email/password'
       render 'new'
