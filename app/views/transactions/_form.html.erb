@@ -10,11 +10,17 @@
   <% end %>
 
   <div class="field form-group-condensed">
-    <%= form.number_field :amount, :value=>@loggedin_user.pref_amount, id: :transaction_amount, class: 'form-control', placeholder: '$ Amount' %>
+    <div class="input-group">
+      <span class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></span>
+      <%= form.number_field :amount, :value=>@loggedin_user.pref_amount, id: :transaction_amount, class: 'form-control', placeholder: 'Amount' %>
+    </div>
   </div>
 
   <div class="field form-group-condensed">
-    <%= form.number_field :phone_number, :value=>@loggedin_user.phone, id: :transaction_phone_number, class: 'form-control' %>
+    <div class="input-group">
+      <span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt"></span></span>
+      <%= form.number_field :phone_number, :value=>@loggedin_user.phone, id: :transaction_phone_number, class: 'form-control', placeholder: 'Phone' %>
+    </div>
   </div>
 
   <div class="field form-group-condensed">
