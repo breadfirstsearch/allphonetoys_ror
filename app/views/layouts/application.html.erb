@@ -10,14 +10,19 @@
   </head>
 
   <body>
-    <% if !current_user && !current_admin %>
-      <%= render "layouts/header" %>
-    <% else %>
+    <% if current_user %>
       <%= render "layouts/authenticated_header" %>
+    <% elsif current_admin %>
+      <%= render "layouts/admin_header" %>
+    <% else %>
+      <%= render "layouts/header" %>
     <% end %>
     <div class="container">
-      <% flash.each do |message_type, message| %>
-            <%= message %>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
       <% end %>
       <%= yield %>
     </div>

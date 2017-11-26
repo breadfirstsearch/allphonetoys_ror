@@ -15,7 +15,7 @@ Feature: User login
     And I fill in "user_email" with "abc@test.com"
     And I fill in "user_phone" with "9876543210"
     And I fill in "user_password" with "qwerty"
-    And I fill in "user_prefAmount" with "23"
+    And I fill in "user_pref_amount" with "23"
     And I press "Sign Up"
     Then I should see "User was successfully created."
     

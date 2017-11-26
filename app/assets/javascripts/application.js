@@ -15,3 +15,28 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+$(document).ready(function() {
+  setTimeout(function() {
+    $('.alert-success').remove()
+    $('.alert-danger').remove()
+  }, 3000)
+
+  $("#transaction_pickupDate").change(function() {
+    var str="<option value>When should we recharge?</option>", dates = []
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    dates[0] = new Date($(this).val().substring(0,12))
+    dates[0] = new Date(dates[0].setDate(dates[0].getDate() + 1))
+    for(var i=1; i<10; i++) {
+      dates[i] = new Date(dates[i-1])
+      dates[i] = new Date(dates[i].setDate(dates[i].getDate() + 1))
+    }
+    for (var i=0; i<10; i++) {
+      var date = dates[i].getDate()
+      var month = months[dates[i].getMonth()]
+      var year = dates[i].getFullYear()
+      var dateValue = date + " " + month + " " + year
+      str += "<option value='" + dateValue + "'>" + dates[i].toDateString() + "</option>"
+    }
+    $("#transaction_rechargeDate").html(str)
+  })
+})

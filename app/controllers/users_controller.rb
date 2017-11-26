@@ -1,26 +1,14 @@
 class UsersController < ApplicationController
+  before_action :require_admin, only: [:index]
   before_action :require_user, :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :admin_privacy, only: [:index]
 
   # GET /users
   # GET /users.json
   def index
     #@users = User.all
 
-    session[:user_name] = params[:name]
-    session[:user_email] = params[:email]
-    session[:user_phone] = params[:phone]
-    session[:user_pref_amount] = params[:prefAmount]
-    session[:user_pref_provider] = params[:prefProvider]
-    session[:user_pref_location] = params[:prefLocation]
-
-    @users = User.where(nil) # creates an anonymous scope
-    @users = @users.user_name(session[:user_name]) if session[:user_name].present?
-    @users = @users.user_email(session[:user_email]) if session[:user_email].present?
-    @users = @users.user_phone(session[:user_phone]) if session[:user_phone].present?
-    @users = @users.user_pref_amount(session[:user_pref_amount]) if session[:user_pref_amount].present?
-    @users = @users.user_pref_provider(session[:user_pref_provider]) if session[:user_pref_provider].present?
-    @users = @users.user_pref_location(session[:user_pref_location]) if session[:user_pref_location].present?
-
+    @users = User.search(params[:search_name],params[:search_phone],params[:search_amount],params[:search_email], params[:search_provider], params[:search_location] )
 
   end
 
@@ -32,15 +20,11 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-    @providers = Provider.find_by_sql("SELECT * FROM providers")
-    @locations = Location.find_by_sql("SELECT * FROM locations")
   end
 
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
-    @providers = Provider.find_by_sql("SELECT * FROM providers")
-    @locations = Location.find_by_sql("SELECT * FROM locations")
   end
 
   # POST /users
@@ -91,6 +75,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :phone, :password, :prefProvider, :prefAmount, :prefLocation)
+      params.require(:user).permit(:name, :email, :phone, :password, :pref_provider, :pref_amount, :pref_location, :search_name, :search_phone , :search_amount, :search_email, :search_provider, :search_location )
     end
 end

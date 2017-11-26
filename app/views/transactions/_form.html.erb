@@ -1,8 +1,6 @@
 <%= form_with(model: transaction, local: true, class: 'col-lg-6', id: 'schedule-form') do |form| %>
   <% if transaction.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
-
+    <div class="alert alert-danger">
       <ul>
       <% transaction.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,34 +9,34 @@
     </div>
   <% end %>
 
-  <div class="field form-group">
-    <%= form.number_field :amount, id: :transaction_amount, class: 'form-control', placeholder: '$ Amount' %>
+  <div class="field form-group-condensed">
+    <div class="input-group">
+      <span class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></span>
+      <%= form.number_field :amount, :value=>@loggedin_user.pref_amount, id: :transaction_amount, class: 'form-control', placeholder: 'Amount' %>
+    </div>
   </div>
 
-  <div class="field form-group">
-    <%= form.number_field :phoneNumber, :value=>@current_user.phone, id: :transaction_phoneNumber, class: 'form-control' %>
+  <div class="field form-group-condensed">
+    <div class="input-group">
+      <span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt"></span></span>
+      <%= form.number_field :phone_number, :value=>@loggedin_user.phone, id: :transaction_phone_number, class: 'form-control', placeholder: 'Phone' %>
+    </div>
   </div>
 
-  <div class="field form-group">
-    <%= form.select :provider, options_for_select(@providers.map { |obj| [obj['provider'], obj['id']] }, @current_user.prefProvider), {prompt: 'Select your service provider'}, {id: :transaction_provider, class: 'form-control'} %>
+  <div class="field form-group-condensed">
+    <%= form.select :provider, options_for_select(@providers.map { |obj| [obj['provider'], obj['provider']] }, @loggedin_user.pref_provider), {prompt: 'Select your service provider'}, {id: :transaction_provider, class: 'form-control'} %>
   </div>
 
-  <div class="field form-group">
-    <%= form.select :location, options_for_select(@locations.map { |obj| [obj['location'], obj['id']] }, @current_user.prefLocation), {prompt: 'Select location'}, {id: :transaction_location, class: 'form-control'} %>
+  <div class="field form-group-condensed">
+    <%= form.select :location, options_for_select(@locations.map { |obj| [obj['location'], obj['location']] }, @loggedin_user.pref_location), {prompt: 'Select location'}, {id: :transaction_location, class: 'form-control'} %>
   </div>
 
-  <div class="field form-group">
-    <label for="scheduledPickupStartDT">scheduledPickupStartDT</label>
-    <%= form.datetime_select label 'scheduledPickupStartDT', :scheduledPickupStartDT, id: :transaction_scheduledPickupStartDT, class: 'form-control', label: 'scheduledPickupStartDT' %>
+  <div class="field form-group-condensed">
+    <%= form.select :pickupDate, options_for_select(@timingsList), {prompt: 'Select a pickup date'}, class:'form-control', id: 'transaction_pickupDate'  %>
   </div>
 
-  <div class="field form-group">
-    <label for="scheduledPickupEndDT">scheduledPickupEndDT</label>
-    <%= form.datetime_select :scheduledPickupEndDT, id: :transaction_scheduledPickupEndDT, class: 'form-control', disabled: 'true' %>
-  </div>
-
-  <div class="field form-group">
-    <%= form.datetime_select :rechargeDueDT, id: :transaction_rechargeDueDT, class: 'form-control' %>
+  <div class="field form-group-condensed">
+    <%= form.select :rechargeDate, options_for_select(@datesList), {prompt: 'When should we recharge?'}, class:'form-control', id: 'transaction_rechargeDate'  %>
   </div>
 
   <div class="field form-group">

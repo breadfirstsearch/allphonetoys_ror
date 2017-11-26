@@ -17,26 +17,26 @@ u.name="jibin"
 u.password="jibin"
 u.email="jibin@gmail.com"
 u.phone="1234567890"
-u.prefAmount="19"
-u.prefLocation=3
-u.prefProvider=1
+u.pref_amount="19"
+u.pref_location="Gardens"
+u.pref_provider="Lyca"
 u.save
 
 t=Transaction.new
 t.amount=19
-t.phoneNumber=1234567890
-t.provider=1
-t.location=3
-t.status=2
+t.phone_number=1234567890
+t.provider="Lyca"
+t.location="Gardens"
+t.status="Picked Up"
 t.user=u
 t.save
 
 t=Transaction.new
 t.amount=45
-t.phoneNumber=1234567890
-t.provider=1
-t.location=3
-t.status=1
+t.phone_number=1234567890
+t.provider="Lyca"
+t.location="Gardens"
+t.status="Scheduled"
 t.user=u
 t.save
 
@@ -45,17 +45,17 @@ u.name="christopher"
 u.password="christopher"
 u.email="christopher@gmail.com"
 u.phone="1234567891"
-u.prefAmount="23"
-u.prefLocation=3
-u.prefProvider=1
+u.pref_amount="23"
+u.pref_location="Gardens"
+u.pref_provider="Lyca"
 u.save
 
 t=Transaction.new
 t.amount=23
-t.phoneNumber=1234567891
-t.provider=1
-t.location=3
-t.status=2
+t.phone_number=1234567891
+t.provider="Lyca"
+t.location="Gardens"
+t.status="Picked Up"
 t.user=u
 t.save
 
@@ -64,17 +64,17 @@ u.name="kavya"
 u.password="kavya"
 u.email="kavya@gmail.com"
 u.phone="1234567892"
-u.prefAmount="26"
-u.prefLocation=1
-u.prefProvider=3
+u.pref_amount="26"
+u.pref_location="College Main"
+u.pref_provider="AT&T"
 u.save
 
 t=Transaction.new
 t.amount=26
-t.phoneNumber=1234567892
-t.provider=3
-t.location=1
-t.status=3
+t.phone_number=1234567892
+t.provider="AT&T"
+t.location="College Main"
+t.status="Recharged"
 t.user=u
 t.save
 
@@ -83,26 +83,26 @@ u.name="vivek"
 u.password="vivek"
 u.email="vivek@gmail.com"
 u.phone="1234567893"
-u.prefAmount="45"
-u.prefLocation=1
-u.prefProvider=3
+u.pref_amount="45"
+u.pref_location="College Main"
+u.pref_provider="Verizon"
 u.save
 
 t=Transaction.new
 t.amount=45
-t.phoneNumber=1234567893
-t.provider=3
-t.location=1
-t.status=3
+t.phone_number=1234567893
+t.provider="Verizon"
+t.location="College Main"
+t.status="Recharged"
 t.user=u
 t.save
 
 t=Transaction.new
 t.amount=100
-t.phoneNumber=1234567893
-t.provider=3
-t.location=1
-t.status=1
+t.phone_number=1234567893
+t.provider="Verizon"
+t.location="College Main"
+t.status="Scheduled"
 t.user=u
 t.save
 
@@ -112,20 +112,22 @@ u.name="habib"
 u.password="habib"
 u.email="habib@gmail.com"
 u.phone="1234567894"
-u.prefAmount="32"
-u.prefLocation=1
-u.prefProvider=2
+u.pref_amount="32"
+u.pref_location="College Main"
+u.pref_provider="T-Mobile"
 u.save
 
 
 t=Transaction.new
 t.amount=45
-t.phoneNumber=1234567894
-t.provider=2
-t.location=1
-t.status=1
+t.phone_number=1234567894
+t.provider="T-Mobile"
+t.location="College Main"
+t.status="Scheduled"
 t.user=u
 t.save
+
+#-------------------------------------------------------------------------------
 
 l=Location.new
 l.location="College Main"
@@ -143,17 +145,30 @@ l=Location.new
 l.location="Scandia"
 l.save
 
+#-------------------------------------------------------------------------------
 
 n=Provider.new
 n.provider="Lyca"
 n.save
 
 n=Provider.new
-n.provider="T mobile"
+n.provider="T-Mobile"
 n.save
 
 n=Provider.new
 n.provider="Verizon"
 n.save
+
+n=Provider.new
+n.provider="AT&T"
+n.save
+
+n=Provider.new
+n.provider="Sprint PCS"
+n.save
+
+
+
+#-------------------------------------------------------------------------------
 
 Admin.create(name:'shaik' ,email: 'shaik@gmail.com',password: 'shaik')

@@ -12,7 +12,7 @@ end
 # Rails 5.1.4
 #
 # Please keep these settings standard for all.
-
+gem "mail"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
@@ -42,6 +42,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem 'devise'
 
 
 group :development, :test do

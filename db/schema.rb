@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101040848) do
+ActiveRecord::Schema.define(version: 20171118175855) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -38,12 +38,22 @@ ActiveRecord::Schema.define(version: 20171101040848) do
     t.string "provider"
   end
 
+  create_table "timings", force: :cascade do |t|
+    t.string "day"
+    t.string "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "hours"
+    t.string "minutes"
+    t.string "ampm"
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.integer "amount"
-    t.integer "phoneNumber", limit: 8
-    t.integer "provider"
-    t.integer "location"
-    t.integer "status"
+    t.integer "phone_number", limit: 8
+    t.string "provider"
+    t.string "location"
+    t.string "status"
     t.datetime "scheduledPickupStartDT"
     t.datetime "scheduledPickupEndDT"
     t.datetime "messagedPickupDT"
@@ -54,6 +64,8 @@ ActiveRecord::Schema.define(version: 20171101040848) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.string "pickupDate"
+    t.string "rechargeDate"
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
@@ -62,11 +74,14 @@ ActiveRecord::Schema.define(version: 20171101040848) do
     t.string "email"
     t.integer "phone", limit: 8
     t.string "password"
-    t.integer "prefProvider"
-    t.integer "prefAmount"
-    t.integer "prefLocation"
+    t.string "pref_provider"
+    t.integer "pref_amount"
+    t.string "pref_location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "auth_token"
+    t.string "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end

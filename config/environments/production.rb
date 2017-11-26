@@ -28,7 +28,10 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.serve_static_assets = true
+  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
+  config.assets.compile = true
+  config.assets.digest = true
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
@@ -60,6 +63,8 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "allphonetoys_ror_#{Rails.env}"
+  config.action_mailer.default_url_options = { host: 'allphonetoys.herokuapp.com' }
+
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
@@ -69,6 +74,20 @@ Rails.application.configure do
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
+config.action_mailer.default_url_options = { :host => 'myapp.herokuapp.com' } 
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.perform_deliveries = true
+
+config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain=> "myapp.herokuapp.com",
+    :authentication => "plain",
+    :enable_starttls_auto => true,
+    :user_name => "habib1.baig@gmail.com",
+    :password => "Alpacino6!"
+  }
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify

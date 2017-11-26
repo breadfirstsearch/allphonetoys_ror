@@ -1,0 +1,19 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Day</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @timings.each do |timing| %>
+      <tr>
+        <td><%= DateTime.parse(timing.date.to_s).strftime("%m/%d/%Y")%></td>
+        <td><%= timing.day%></td>
+        <td><%= timing.hours + ":" + timing.minutes + " " + timing.ampm %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
