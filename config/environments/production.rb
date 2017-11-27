@@ -85,8 +85,8 @@ config.action_mailer.smtp_settings = {
     :domain=> "myapp.herokuapp.com",
     :authentication => "plain",
     :enable_starttls_auto => true,
-    :user_name => "habib1.baig@gmail.com",
-    :password => "Alpacino6!"
+    :user_name => ENV["MAILER_EMAIL"],
+    :password => ENV["MAILER_PASSWORD"]
   }
 
   # Send deprecation notices to registered listeners.
