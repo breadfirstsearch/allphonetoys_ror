@@ -41,4 +41,15 @@ describe "On the homepage, admins" do
         click_button 'Log in'
         expect(page).to have_text("Admin Dashboard")
     end
+    it 'sign out successfully' do
+        visit '/login'
+        expect(page).to have_text("Don't have an account?")
+        fill_in 'email', :with => "shaik@gmail.com"
+        fill_in 'password', :with => "shaik123"
+        click_button 'Log in'
+        expect(page).to have_text("Admin Dashboard")
+        expect(page).to have_text("Log out")
+        click_link "Log out"
+        expect(page).to have_text("Don't have an account?")
+    end
 end
