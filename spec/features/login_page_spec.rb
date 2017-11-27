@@ -65,4 +65,16 @@ describe "On the homepage, users" do
         click_link "Log out"
         expect(page).to have_text("Don't have an account?")
     end
+    it 'schedule a pickup' do
+        visit '/login'
+        fill_in 'email', :with => "abcd@test.com"
+        fill_in 'password', :with => "qwerty"
+        click_button 'Log in'
+        expect(page).to have_text("Schedule a pickup")
+        click_link "Schedule a pickup"
+        expect(page).to have_text("Select your service provider")
+        expect(page).to have_text("Select location")
+        click_button 'Schedule'
+        expect(page).to have_text("Transaction was successfully created.")
+    end
 end
