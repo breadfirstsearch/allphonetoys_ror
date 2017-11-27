@@ -77,4 +77,18 @@ describe "On the homepage, users" do
         click_button 'Schedule'
         expect(page).to have_text("Transaction was successfully created.")
     end
+    it 'edit profile' do
+        visit '/login'
+        fill_in 'email', :with => "abcd@test.com"
+        fill_in 'password', :with => "qwerty"
+        click_button 'Log in'
+        expect(page).to have_text("Edit profile")
+        click_link "Edit profile"
+        expect(page).to have_text("Select your preferred service provider")
+        fill_in 'user_name', :with => "xyz123"
+        click_button 'Save'
+        expect(page).to have_text("User was successfully updated.")
+        expect(page).to have_text("xyz123")
+    end
+    
 end
