@@ -56,4 +56,13 @@ describe "On the homepage, users" do
         click_button 'Log in'
         expect(page).to have_text("Invalid email/password")
     end
+    it 'sign out successfully' do
+        visit '/login'
+        fill_in 'email', :with => "abcd@test.com"
+        fill_in 'password', :with => "qwerty"
+        click_button 'Log in'
+        expect(page).to have_text("Log out")
+        click_link "Log out"
+        expect(page).to have_text("Don't have an account?")
+    end
 end
