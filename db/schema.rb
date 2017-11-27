@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(version: 20171118175855) do
 
   create_table "transactions", force: :cascade do |t|
     t.integer "amount"
-    t.integer "phone_number", limit: 8
-    t.string "provider"
-    t.string "location"
-    t.string "status"
+    t.integer "phoneNumber", limit: 8
+    t.integer "provider"
+    t.integer "location"
+    t.integer "status"
     t.datetime "scheduledPickupStartDT"
     t.datetime "scheduledPickupEndDT"
     t.datetime "messagedPickupDT"
@@ -74,9 +74,9 @@ ActiveRecord::Schema.define(version: 20171118175855) do
     t.string "email"
     t.integer "phone", limit: 8
     t.string "password"
-    t.string "pref_provider"
-    t.integer "pref_amount"
-    t.string "pref_location"
+    t.integer "prefProvider"
+    t.integer "prefAmount"
+    t.integer "prefLocation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "auth_token"
