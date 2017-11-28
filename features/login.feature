@@ -30,3 +30,9 @@ Feature: User login
     
     When I sign with invalid email as "abc"
     Then I should see "Invalid email/password"
+    
+    Then I should see "Forgot Password?"
+    When I follow "Forgot Password?"
+    Then I should see "Resets Password"
+    Then I press "Reset Password"
+    Then I should see "Email sent with password reset instructions."
