@@ -54,6 +54,20 @@ Feature: Admin dashboard
     And I should see "Provider"
     And I should see "Location"
     And I should see "Status"
+    
+  Scenario: View Timings list
+    When I follow "Timings"
+    Then I should see "Day"
+    And I should see "Time"
+    And I should see "Action"
+    When I am on the timings new page
+    Then I should see "All users"
+    When I select "Mon" from "timing_day"
+    When I select "12" from "timing_hours"
+    When I select "00" from "timing_minutes"
+    When I select "pm" from "timing_ampm"
+    When I press "Add Timing"
+    Then I should see "Timing was successfully created."
 
   Scenario: View Locations list
     When I follow "Locations"
@@ -76,4 +90,4 @@ Feature: Admin dashboard
     When I follow "All Phone Toys"
     Then I am on the admin dashboard page
     And I should see "Admin Dashboard"
-    
+ 

@@ -65,6 +65,10 @@ When(/^I select the time (\d+)\-(\d+)\-(\d+) (\d+):(\d+) from "(.*?)"$/) do |yea
   select minute, from: "#{id}_5i", visible: false
 end
 
+When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
+  select(value, :from => field)
+end
+
 Then /^(?:|I )should see "([^"]*)"$/ do |text|
   if page.respond_to? :should
     page.should have_content(text)
