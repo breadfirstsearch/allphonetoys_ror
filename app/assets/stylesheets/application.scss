@@ -22,7 +22,7 @@
 
 body, html {
   height: 95%;
-  display: grid;
+  //display: grid;
   background-color: transparent;
   color: white;
   background-image: url(bg.jpeg);
@@ -30,8 +30,17 @@ body, html {
   background-attachment: fixed;
 }
 
-.alert.alert-danger, .alert.alert-success {
-  position: fixed;
+body > .container {
+  height: 100%;
+  position: relative;
+}
+
+body > .container > .content {
+  width: 90%;
+  position: absolute;
+  top: 30%;
+  left: 5%;
+  transform: translate(0, -30%);
 }
 
 textarea {
