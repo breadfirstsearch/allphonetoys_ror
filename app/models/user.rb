@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates_format_of :email, :with => Devise::email_regexp
+
+  validates_presence_of  :pref_location, :pref_provider
   
   validates :phone, numericality: { only_integer: true, greater_than_or_equal_to: 1000000000 }, length: { is: 10 }
   before_create { generate_token(:auth_token) }

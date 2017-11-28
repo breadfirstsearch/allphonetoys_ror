@@ -4,6 +4,7 @@ class Transaction < ApplicationRecord
   validates :amount, presence: true, numericality: { only_integer: true, less_than_or_equal_to:1000 }
   validates :phone_number, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1000000000 }, length: { is: 10 }
 
+  validates_presence_of :provider, :location, :status, :pickupDate, :rechargeDate
 
   scope :trans_status_pickups                   , -> (                         ) { where "status                      LIKE ? or status LIKE ?",'Scheduled','Picked Up' }
   scope :trans_status_recharges                   , -> (                         ) { where "status                      LIKE ? or status LIKE ?",'Picked Up','Recharged' }
