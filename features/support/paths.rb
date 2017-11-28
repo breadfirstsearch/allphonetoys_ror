@@ -24,6 +24,8 @@ module NavigationHelpers
     '/timings/new'
     when /^the locations new page$/
     '/locations/new'
+    when /^the providers new page$/
+    '/providers/new'
     else
       begin
         page_name =~ /^the (.*) page$/

@@ -85,6 +85,11 @@ Feature: Admin dashboard
     Then I should see "Provider ID"
     And I should see "Provider"
     And I should see "Action"
+    When I am on the providers new page
+    Then I should see "All users"
+    When I fill in "provider_provider" with "Lyca"
+    When I press "Add Provider"
+    Then I should see "Provider was successfully created."
 
   Scenario: Log out successfully
     When I follow "Log out"
