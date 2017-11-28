@@ -22,7 +22,8 @@ module NavigationHelpers
       '/adminDashboard'
     when /^the timings new page$/
     '/timings/new'
-      
+    when /^the locations new page$/
+    '/locations/new'
     else
       begin
         page_name =~ /^the (.*) page$/

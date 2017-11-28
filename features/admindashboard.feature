@@ -74,6 +74,11 @@ Feature: Admin dashboard
     Then I should see "Location ID"
     And I should see "Location"
     And I should see "Action"
+    When I am on the locations new page
+    Then I should see "All users"
+    When I fill in "location_location" with "Gardens"
+    When I press "Add Location"
+    Then I should see "Location was successfully created."
 
   Scenario: View Providers list
     When I follow "Providers"
