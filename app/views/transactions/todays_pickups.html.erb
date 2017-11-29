@@ -34,7 +34,7 @@
       <tr>
           <% end %>
 
-        <td><%= transaction.user.name%></td>
+        <td><%= transaction.user_id ? User.find(transaction.user_id).name : 'Temp user' %></td>
         <td><%= transaction.amount %></td>
        <td><%= transaction.phone_number %></td>
         <td><%= transaction.provider %></td>
