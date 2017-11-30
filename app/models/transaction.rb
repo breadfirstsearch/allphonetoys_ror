@@ -1,4 +1,5 @@
 class Transaction < ApplicationRecord
+  belongs_to :user
 
   validates :amount, presence: true, numericality: { only_integer: true, less_than_or_equal_to:1000 }
   validates :phone_number, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1000000000 }, length: { is: 10 }
@@ -21,3 +22,4 @@ class Transaction < ApplicationRecord
 
 
 end
+

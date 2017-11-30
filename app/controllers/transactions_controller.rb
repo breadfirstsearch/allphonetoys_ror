@@ -64,16 +64,6 @@ class TransactionsController < ApplicationController
         format.html { redirect_to transactions_path, notice: 'Transaction was successfully created.' }
         format.json { render :show, status: :created, location: @transaction }
       else
-        @timingsList = []
-        @datesList = []
-        @timings = Timing.find_by_sql("SELECT day, hours, minutes, ampm FROM timings")
-        @timings.each do |timing|
-          timing.day = date_of_next(timing.day).strftime("%d %b %Y") + " - " + timing.hours + ":" + timing.minutes + " " + timing.ampm
-          @timingsList.push([timing.day, timing.day])
-        end
-        for i in 1..10
-          @datesList.push([(Date.today+i).strftime("%d %b %Y"), (Date.today+i).strftime("%d %b %Y")])
-        end
         format.html { render :new }
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
