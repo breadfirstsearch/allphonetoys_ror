@@ -12,6 +12,7 @@ Transaction.delete_all
 Location.delete_all
 Provider.delete_all
 
+=begin
 u=User.new
 u.name="jibin"
 u.password="jibin"
@@ -126,6 +127,7 @@ t.location="College Main"
 t.status="Scheduled"
 t.user=u
 t.save
+=end
 
 #-------------------------------------------------------------------------------
 
