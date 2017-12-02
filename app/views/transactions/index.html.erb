@@ -1,10 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+<% if !current_admin %>
 <div class="col-lg-12 text-right">
   <%= link_to schedulePickup_path do %>
     <span class="new-transaction">+</span>
   <% end %>
 </div>
+<% end %>
 
 <%= form_tag transactions_path , :method => 'get' do %>
     <p>
