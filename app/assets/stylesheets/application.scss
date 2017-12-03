@@ -59,12 +59,20 @@ select, input {
   margin-bottom: 20px;
 }
 
+.table-striped {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.table-striped > thead > tr > th {
+  border-bottom: 1px solid white;
+}
+
 .table-striped > tbody > tr:nth-of-type(odd) {
-  background-color: #2d2d2d;
+  background-color: transparent;
 }
 
 .table-striped > tbody > tr:nth-of-type(even) {
-  background-color: #444;
+  background-color: transparent;
 }
 
 .table th, .table td {
