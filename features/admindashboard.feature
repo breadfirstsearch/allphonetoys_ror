@@ -62,8 +62,27 @@ Feature: Admin dashboard
     And I should see "Action"
     When I am on the timings new page
     Then I should see "All users"
+    
+    When I press "Add Timing"
+    Then I should see "3 errors prohibited this location from being saved:"
+    Then I should see "Day can't be blank"
+    Then I should see "Hours can't be blank"
+    Then I should see "Minutes can't be blank"
+#
     When I select "Mon" from "timing_day"
-    When I select "12" from "timing_hours"
+    When I press "Add Timing"
+    Then I should see "2 errors prohibited this location from being saved:"
+    #Then I should see "Day can't be blank"
+    Then I should see "Hours can't be blank"
+    Then I should see "Minutes can't be blank"
+    
+    When I select "1" from "timing_hours"
+    When I press "Add Timing"
+    Then I should see "1 error prohibited this location from being saved:"
+    #Then I should see "Day can't be blank"
+    #Then I should see "Hours can't be blank"
+    Then I should see "Minutes can't be blank"
+    
     When I select "00" from "timing_minutes"
     When I select "pm" from "timing_ampm"
     When I press "Add Timing"
@@ -76,6 +95,12 @@ Feature: Admin dashboard
     And I should see "Action"
     When I am on the locations new page
     Then I should see "All users"
+    When I press "Add Location"
+    
+    When I press "Add Location"
+    Then I should see "1 error prohibited this location from being saved:"
+    Then I should see "Location can't be blank"
+    
     When I fill in "location_location" with "Gardens"
     When I press "Add Location"
     Then I should see "Location was successfully created."
