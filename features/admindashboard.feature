@@ -112,6 +112,11 @@ Feature: Admin dashboard
     And I should see "Action"
     When I am on the providers new page
     Then I should see "All users"
+    
+    When I press "Add Provider"
+    Then I should see "1 error prohibited this provider from being saved:"
+    Then I should see "Provider can't be blank"
+    
     When I fill in "provider_provider" with "Lyca"
     When I press "Add Provider"
     Then I should see "Provider was successfully created."
