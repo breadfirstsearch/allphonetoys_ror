@@ -58,6 +58,16 @@ class TransactionsController < ApplicationController
     @transaction.update(user_id: session[:user_id])
     @transaction.update(status: 'Scheduled')
 
+    @timingsList = []
+    @datesList = []
+    @timings = Timing.find_by_sql("SELECT day, hours, minutes, ampm FROM timings")
+    @timings.each do |timing|
+      timing.day = date_of_next(timing.day).strftime("%d %b %Y") + " - " + timing.hours + ":" + timing.minutes + " " + timing.ampm
+      @timingsList.push([timing.day, timing.day])
+    end
+    for i in 1..10
+      @datesList.push([(Date.today+i).strftime("%d %b %Y"), (Date.today+i).strftime("%d %b %Y")])
+    end
 
     respond_to do |format|
       if @transaction.save
