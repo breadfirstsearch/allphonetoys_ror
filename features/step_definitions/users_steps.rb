@@ -1,6 +1,23 @@
+When /^(?:|I )check "([^"]*)"$/ do |field|
+  check(field)
+end
+
+When /^(?:|I )go to (.+)$/ do |page_name|
+  visit path_to(page_name)
+end
+
+When("I select the first element from {string}") do |string|
+  #first('#string option').select_option
+  #pending # Write code here that turns the phrase above into concrete actions
+  first_element = find("#string > option:nth-child(1)").text
+  select(first_element, :from => string)
+end
+
+
 When /^I sign in as "(.*)" and "(.*)"$/ do |email, password|
   fill_in 'email', :with => "#{email}"
   fill_in 'password', :with => "#{password}"
+  check('remember_me')
   click_button 'Log in'
 end
 
@@ -12,6 +29,8 @@ Given /^I am signed in$/ do
   fill_in 'user_phone', :with => '9876543210'
   fill_in 'user_password', :with => 'qwerty'
   fill_in 'user_pref_amount', :with => '23'
+  select("Lyca", :from => "user_pref_provider")
+  select("Gardens", :from => "user_pref_location")
   click_button 'Sign Up'
   if page.respond_to? :should
     page.should have_content('User was successfully created.')
@@ -66,7 +85,9 @@ When(/^I select the time (\d+)\-(\d+)\-(\d+) (\d+):(\d+) from "(.*?)"$/) do |yea
 end
 
 When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
-  select(value, :from => field)
+  #select(value, :from => field)
+  select value, from: field, visible: false
+  #select "General", from: "Category", visible: false
 end
 
 Then /^(?:|I )should see "([^"]*)"$/ do |text|

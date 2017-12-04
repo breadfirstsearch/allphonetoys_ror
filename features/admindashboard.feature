@@ -104,6 +104,26 @@ Feature: Admin dashboard
     When I fill in "location_location" with "Gardens"
     When I press "Add Location"
     Then I should see "Location was successfully created."
+    
+  Scenario: Destroy Location
+    When I follow "Locations"
+    Then I should see "Location ID"
+    And I should see "Location"
+    And I should see "Action"
+    When I am on the locations new page
+    Then I should see "All users"
+    When I press "Add Location"
+    
+    When I press "Add Location"
+    Then I should see "1 error prohibited this location from being saved:"
+    Then I should see "Location can't be blank"
+    
+    When I fill in "location_location" with "Gardens"
+    When I press "Add Location"
+    Then I should see "Location was successfully created."
+    
+    #When I go to the first location page
+    #Then I should see "lol"
 
   Scenario: View Providers list
     When I follow "Providers"
