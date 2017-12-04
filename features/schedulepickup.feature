@@ -98,13 +98,21 @@ Feature: Schedule a pickup
     Then I should see "Select a pickup date"
     Then I should see "When should we recharge?"
     
+    And I press "Schedule"
+    Then I should see "Pickupdate can't be blank"
+    Then I should see "Rechargedate can't be blank"
+    #Then I should see "Transaction was successfully created."
+    
     When I select "04 Dec 2017 - 01:00 pm" from "transaction_pickupDate"
+    And I press "Schedule"
+    Then I should see "Rechargedate can't be blank"
+     
     When I select "05 Dec 2017" from "transaction_rechargeDate"
     
     #When I select the first element from "transaction_pickupDate"
     #When I select the first element from "transaction_rechargeDate"
     
-    Then I should see "Select location"
+    #Then I should see "Select location"
     
     And I fill in "transaction_amount" with "123"
     And I press "Schedule"

@@ -77,6 +77,7 @@ Feature: User login
     Then I should see "User was successfully created."
     
     When I sign in as "abc@test.com" and "qwerty"
+    Then I should be on the schedulepickup page
     Then I should see "Log out"
     
     And I follow "Log out"
@@ -84,6 +85,7 @@ Feature: User login
     
     When I sign in as "abc@test.com" and "q"
     Then I should see "Invalid email/password"
+    And I should be on the login page
     
     When I sign with invalid email as "abc"
     Then I should see "Invalid email/password"
