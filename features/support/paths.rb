@@ -12,6 +12,8 @@ module NavigationHelpers
   #
   def path_to(page_name)
     case page_name
+    when /^the home page$/
+      '/'
     when /^the login page$/
       '/login'
     when /^the signup page$/
@@ -20,6 +22,14 @@ module NavigationHelpers
       '/admins'
     when /^the admin dashboard page$/
       '/adminDashboard'
+    when /^the timings new page$/
+    '/timings/new'
+    when /^the locations new page$/
+    '/locations/new'
+    when /^the providers new page$/
+    '/providers/new'
+    when /^the first location page$/
+    '/locations/1'
     else
       begin
         page_name =~ /^the (.*) page$/

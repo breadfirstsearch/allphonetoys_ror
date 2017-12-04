@@ -100,12 +100,50 @@ describe "On the homepage, admins" do
         expect(page).to have_text("Location")
         expect(page).to have_text("Status")
     end
+    it 'view all Timings list' do
+        expect(page).to have_text("Timings")
+        click_link "Timings"
+        expect(page).to have_text("Day")
+        expect(page).to have_text("Time")
+        expect(page).to have_text("Action")
+        visit '/timings/new'
+        expect(page).to have_text("All users")
+        click_button "Add Timing"
+        expect(page).to have_text("3 errors prohibited this location from being saved:")
+        expect(page).to have_text("Day can't be blank")
+        expect(page).to have_text("Hours can't be blank")
+        expect(page).to have_text("Minutes can't be blank")
+        select "Mon", from: 'timing_day', visible: false
+        click_button "Add Timing"
+        expect(page).to have_text("2 errors prohibited this location from being saved:")
+        #expect(page).to have_text("Day can't be blank")
+        expect(page).to have_text("Hours can't be blank")
+        expect(page).to have_text("Minutes can't be blank")
+        select "1", from: 'timing_hours', visible: false
+        click_button "Add Timing"
+        expect(page).to have_text("1 error prohibited this location from being saved:")
+        #expect(page).to have_text("Day can't be blank")
+        #expect(page).to have_text("Hours can't be blank")
+        expect(page).to have_text("Minutes can't be blank")
+        select "00", from: 'timing_minutes', visible: false
+        select "pm", from: 'timing_ampm', visible: false
+        click_button "Add Timing"
+        expect(page).to have_text("Timing was successfully created.")
+    end
     it 'view all Locations list' do
         expect(page).to have_text("Locations")
         click_link "Locations"
         expect(page).to have_text("Location ID")
         expect(page).to have_text("Location")
         expect(page).to have_text("Action")
+        visit '/locations/new'
+        expect(page).to have_text("All users")
+        click_button "Add Location"
+        expect(page).to have_text("1 error prohibited this location from being saved:")
+        expect(page).to have_text("Location can't be blank")
+        fill_in 'location_location', :with => "Gardens"
+        click_button "Add Location"
+        expect(page).to have_text("Location was successfully created.")
     end
     it 'view all Providers list' do
         expect(page).to have_text("Providers")
@@ -113,6 +151,14 @@ describe "On the homepage, admins" do
         expect(page).to have_text("Provider ID")
         expect(page).to have_text("Provider")
         expect(page).to have_text("Action")
+        visit '/providers/new'
+        expect(page).to have_text("All users")
+        click_button "Add Provider"
+        expect(page).to have_text("1 error prohibited this provider from being saved:")
+        expect(page).to have_text("Provider can't be blank")
+        fill_in 'provider_provider', :with => "Lyca"
+        click_button "Add Provider"
+        expect(page).to have_text("Provider was successfully created.")
     end
     it 'Redirect AllPhoneToys label to the same page' do
         expect(page).to have_text("All Phone Toys")
