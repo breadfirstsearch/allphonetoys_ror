@@ -162,6 +162,11 @@ describe "On the homepage, users" do
         #fill_in 'email', :with => "abcd@test.com"
         click_button "Reset Password"
         expect(page).to have_text("Email sent with password reset instructions.")
+        if current_path.respond_to? :should
+            current_path.should == ('/')
+        else
+            assert_equal ('/'), current_path
+        end
     end
     it 'sign out successfully' do
         visit '/login'

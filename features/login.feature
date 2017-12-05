@@ -95,3 +95,4 @@ Feature: User login
     Then I should see "Resets Password"
     Then I press "Reset Password"
     Then I should see "Email sent with password reset instructions."
+    Then I should be on the home page
