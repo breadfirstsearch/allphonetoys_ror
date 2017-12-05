@@ -34,9 +34,10 @@ class AdminsController < ApplicationController
       if @admin.save
         format.html { redirect_to @admin, notice: 'Admin was successfully created.' }
         format.json { render :show, status: :created, location: @admin }
-      else
-        format.html { render :new }
-        format.json { render json: @admin.errors, status: :unprocessable_entity }
+      #currently not in use
+      #else
+      #  format.html { render :new }
+      #  format.json { render json: @admin.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,9 +49,10 @@ class AdminsController < ApplicationController
       if @admin.update(admin_params)
         format.html { redirect_to @admin, notice: 'Admin was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin }
-      else
-        format.html { render :edit }
-        format.json { render json: @admin.errors, status: :unprocessable_entity }
+      #currently not in use
+      #else
+      #  format.html { render :edit }
+      #  format.json { render json: @admin.errors, status: :unprocessable_entity }
       end
     end
   end

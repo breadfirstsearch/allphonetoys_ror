@@ -63,6 +63,10 @@ Feature: Edit profile
   Scenario: Update user date successfully
     When I follow "Edit profile"
     Then I should see "Choose a password of at least 6 characters"
+    And I fill in "user_phone" with "11111111111111111010"
+    And I press "Save"
+    Then I should see "Phone is the wrong length (should be 10 characters)"
+    Then I fill in "user_phone" with "9876543210"
     And I fill in "user_name" with "xyz123"
     And I press "Save"
     Then I should see "User was successfully updated."

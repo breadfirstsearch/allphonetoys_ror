@@ -87,6 +87,13 @@ Feature: Admin dashboard
     When I select "pm" from "timing_ampm"
     When I press "Add Timing"
     Then I should see "Timing was successfully created."
+    
+    
+    When I am on the edit first timing page
+    #Then I should see "lol"
+    When I select "15" from "timing_minutes"
+    When I press "Update timing"
+    Then I should see "Timing was successfully updated."
 
   Scenario: View Locations list
     When I follow "Locations"

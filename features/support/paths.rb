@@ -30,6 +30,11 @@ module NavigationHelpers
     '/providers/new'
     when /^the first location page$/
     '/locations/1'
+    when /^the schedulepickup page$/
+    '/schedulePickup'
+    when /^the edit first timing page$/
+    '/timings/1/edit'
+    
     else
       begin
         page_name =~ /^the (.*) page$/
