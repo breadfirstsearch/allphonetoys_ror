@@ -172,9 +172,9 @@ describe "On the homepage, users" do
         expect(page).to have_text("Select your service provider")
         expect(page).to have_text("Select a pickup date")
         expect(page).to have_text("When should we recharge?")
-        
-        select "04 Dec 2017 - 01:00 pm", from: "transaction_pickupDate", visible: false
-        select "05 Dec 2017", from: "transaction_rechargeDate", visible: false
+        #hardcoded
+        select "11 Dec 2017 - 01:00 pm", from: "transaction_pickupDate", visible: false
+        select "11 Dec 2017", from: "transaction_rechargeDate", visible: false
         
         expect(page).to have_text("Select location")
         fill_in 'transaction_amount', :with => "123"

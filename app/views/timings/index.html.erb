@@ -25,7 +25,7 @@
             <% end %>
           </div>
           <div class="delete-location">
-            <%= link_to deleteTiming_path(timing), method: "delete" do %>
+            <%= link_to deleteTiming_path(timing), id: timing.id, method: "delete" do %>
               <span class="glyphicon glyphicon-remove"></span>
             <% end %>
           </div>

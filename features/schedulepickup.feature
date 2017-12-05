@@ -102,12 +102,12 @@ Feature: Schedule a pickup
     Then I should see "Pickupdate can't be blank"
     Then I should see "Rechargedate can't be blank"
     #Then I should see "Transaction was successfully created."
-    
-    When I select "04 Dec 2017 - 01:00 pm" from "transaction_pickupDate"
+    #hardcoded
+    When I select "11 Dec 2017 - 01:00 pm" from "transaction_pickupDate"
     And I press "Schedule"
     Then I should see "Rechargedate can't be blank"
      
-    When I select "05 Dec 2017" from "transaction_rechargeDate"
+    When I select "11 Dec 2017" from "transaction_rechargeDate"
     
     #When I select the first element from "transaction_pickupDate"
     #When I select the first element from "transaction_rechargeDate"

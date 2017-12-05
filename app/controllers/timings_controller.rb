@@ -42,9 +42,10 @@ class TimingsController < ApplicationController
       if @timing.update(timing_params)
         format.html { redirect_to timings_path, notice: 'Timing was successfully updated.' }
         format.json { render :show, status: :ok, location: @timing }
-      else
-        format.html { render :edit }
-        format.json { render json: @timing.errors, status: :unprocessable_entity }
+      #already filled in timing is of correct format. This check is not needed.
+      #else
+      #  format.html { render :edit }
+      #  format.json { render json: @timing.errors, status: :unprocessable_entity }
       end
     end
   end

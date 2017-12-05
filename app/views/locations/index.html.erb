@@ -20,7 +20,7 @@
         <td><%= location.location %></td>
         <td>
           <div class="delete-location">
-            <%= link_to deleteLocation_path(location), method: "delete" do %>
+            <%= link_to deleteLocation_path(location), id: location.id, method: "delete" do %>
               <span class="glyphicon glyphicon-remove"></span>
             <% end %>
           </div>
