@@ -153,6 +153,16 @@ describe "On the homepage, users" do
         click_button 'Log in'
         expect(page).to have_text("Invalid email/password")
     end
+    it 'reset password' do
+        #Test Login 
+        visit '/login'
+        expect(page).to have_text("Forgot Password?")
+        click_link "Forgot Password?"
+        expect(page).to have_text("Resets Password")
+        #fill_in 'email', :with => "abcd@test.com"
+        click_button "Reset Password"
+        expect(page).to have_text("Email sent with password reset instructions.")
+    end
     it 'sign out successfully' do
         visit '/login'
         fill_in 'email', :with => "abcd@test.com"
@@ -180,6 +190,11 @@ describe "On the homepage, users" do
         fill_in 'transaction_amount', :with => "123"
         click_button 'Schedule'
         expect(page).to have_text("Transaction was successfully created.")
+        expect(page).to have_text("123")
+        expect(page).to have_text("Scheduled")
+        fill_in 'search_phone', :with => "123"
+        click_button "Search"
+        
     end
     it 'edit profile' do
         visit '/login'
@@ -189,6 +204,10 @@ describe "On the homepage, users" do
         expect(page).to have_text("Edit profile")
         click_link "Edit profile"
         expect(page).to have_text("Choose a password of at least 6 characters")
+        fill_in 'user_phone', :with => "11111111111111111010"
+        click_button 'Save'
+        expect(page).to have_text("Phone is the wrong length (should be 10 characters)")
+        fill_in 'user_phone', :with => "9876543210"
         fill_in 'user_name', :with => "xyz123"
         click_button 'Save'
         expect(page).to have_text("User was successfully updated.")

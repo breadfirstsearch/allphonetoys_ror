@@ -94,15 +94,16 @@ class TransactionsController < ApplicationController
     end
   end
 
+#Currently not in use
   # DELETE /transactions/1
   # DELETE /transactions/1.json
-  def destroy
-    @transaction.destroy
-    respond_to do |format|
-      format.html { redirect_to transactions_url, notice: 'Transaction was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  #def destroy
+  #  @transaction.destroy
+  #  respond_to do |format|
+  #    format.html { redirect_to transactions_url, notice: 'Transaction was successfully destroyed.' }
+  #    format.json { head :no_content }
+  #  end
+  #end
 
   def do_pickup
     transaction = Transaction.find(params[:id])

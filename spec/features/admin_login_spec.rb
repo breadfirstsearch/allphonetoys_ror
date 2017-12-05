@@ -1,23 +1,6 @@
 require 'rails_helper'
 describe "On the homepage, admins" do
-    
-    it 'can sign up successfully' do
-        #Create admin first
-        visit '/admins'
-        expect(page).to have_content("New Admin")
-        click_link "New Admin"
-        expect(page).to have_content("Email")
-        
-        fill_in('admin_name', :with => 'shaik1')
-        fill_in('admin_email', :with => 'shaik1@gmail.com')
-        fill_in('admin_password', :with => 'shaik123')
-        click_button('Create Admin')
-        
-        #debugger
-        expect(page).to have_content("Admin was successfully created.")
-    end
-    
-   before(:each) do
+    before(:each) do
         #Create admin first
         visit '/admins'
         expect(page).to have_content("New Admin")
@@ -32,6 +15,56 @@ describe "On the homepage, admins" do
         #debugger
         expect(page).to have_content("Admin was successfully created.")
         visit '/login'
+        
+    end
+    it 'can sign up successfully' do
+        #Create admin first
+        visit '/admins'
+        #expect(page).to have_content("New Admin")
+        #click_link "New Admin"
+        #expect(page).to have_content("Email")
+        
+        #fill_in('admin_name', :with => 'shaik1')
+        #fill_in('admin_email', :with => 'shaik1@gmail.com')
+        #fill_in('admin_password', :with => 'shaik123')
+        #click_button('Create Admin')
+        
+        #debugger
+        #expect(page).to have_content("Admin was successfully created.")
+        #visit '/admins'
+        expect(page).to have_content("Show")
+        click_link "Show"
+        expect(page).to have_content("Name: shaik")
+        expect(page).to have_content("Email: shaik@gmail.com")
+        expect(page).to have_content("Password: shaik123")
+        expect(page).to have_content("Back")
+        click_link "Back"
+        current_path = URI.parse(current_url).path
+        if current_path.respond_to? :should
+            current_path.should == ('/admins')
+        else
+            assert_equal ('/admins'), current_path
+        end
+        
+        expect(page).to have_content("Edit")
+        click_link "Edit"
+        fill_in('admin_name', :with => 'shaik12')
+        click_button "Update Admin"
+        expect(page).to have_content("Admin was successfully updated.")
+        expect(page).to have_content("Name: shaik12")
+        current_path = URI.parse(current_url).path
+        if current_path.respond_to? :should
+            current_path.should == ('/admins/1')
+        else
+            assert_equal ('/admins/1'), current_path
+        end
+        click_link "Back"
+        
+        
+        expect(page).to have_content("Destroy")
+        click_link "Destroy"
+        expect(page).to have_content("Admin was successfully destroyed.")
+        
         
     end
     it 'can sign in with correct Email and Password' do
@@ -240,6 +273,12 @@ describe "On the homepage, admins" do
         expect(page).to have_text("All Phone Toys")
         click_link "All Phone Toys"
         #Then I am on the admin dashboard page
+        current_path = URI.parse(current_url).path
+        if current_path.respond_to? :should
+            current_path.should == ('/adminDashboard')
+        else
+            assert_equal ('/adminDashboard'), current_path
+        end
         expect(page).to have_text("Admin Dashboard")
     end
 end
