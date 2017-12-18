@@ -31,17 +31,7 @@
       <th>Pickup Date</th>
       <th>Recharge on</th>
       <th>Status</th>
-
-      <% if false %>
-      <th>Scheduledpickupstartdt</th>
-      <th>Scheduledpickupenddt</th>
-      <th>Messagedpickupdt</th>
-      <th>Pickedupdt</th>
-      <th>Rechargeduedt</th>
-      <th>Rechargeddt</th>
       <th>Remarks</th>
-      <th colspan="3"></th>
-      <% end %>
     </tr>
   </thead>
 
@@ -56,16 +46,7 @@
         <td><%= transaction.pickupDate %></td>
         <td><%= transaction.rechargeDate %></td>
         <td><%= transaction.status %></td>
-        <% if false %>
-        <td><%= transaction.scheduledPickupStartDT %></td>
-        <td><%= transaction.scheduledPickupEndDT %></td>
-        <td><%= transaction.messagedPickupDT %></td>
-        <td><%= transaction.pickedUpDT %></td>
-        <td><%= transaction.rechargeDueDT %></td>
-        <td><%= transaction.rechargedDT %></td>
         <td><%= transaction.remarks %></td>
-  <% end %>
-
       </tr>
     <% end %>
   </tbody>
