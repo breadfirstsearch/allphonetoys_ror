@@ -22,25 +22,11 @@
 
 body, html {
   height: 95%;
-  //display: grid;
   background-color: transparent;
   color: white;
   background-image: url(bg.jpeg);
   background-size: cover;
   background-attachment: fixed;
-}
-
-body > .container {
-  height: 100%;
-  position: relative;
-}
-
-body > .container > .content {
-  width: 90%;
-  position: absolute;
-  top: 30%;
-  left: 5%;
-  transform: translate(0, -30%);
 }
 
 textarea {
