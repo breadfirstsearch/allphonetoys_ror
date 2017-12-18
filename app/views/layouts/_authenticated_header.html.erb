@@ -21,6 +21,9 @@
           <% end %>
         </li>
         <li>
+          <a href="#" data-toggle="tooltip" title="9848022338" data-placement="bottom" class="gold-tip">Call Shaik</a>
+        </li>
+        <li>
           <%= link_to user_timings_path, :class => cp(user_timings_path) do %>
             Available Timings
           <% end %>
@@ -39,3 +42,9 @@
     </div>
   </div>
 </nav>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>

@@ -41,6 +41,17 @@ select, input {
   color: black;
 }
 
+.gold-tip + .tooltip.bottom > .tooltip-arrow {
+  border-bottom-color: #ffb204;
+}
+
+.tooltip-inner {
+  background-color: #ffb204;
+  color: #111;
+  font-size: 16px;
+  font-family: 'Saira', sans-serif;
+}
+
 .logo {
   margin-bottom: 20px;
 }
