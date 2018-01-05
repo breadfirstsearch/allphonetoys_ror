@@ -12,7 +12,7 @@
       <tr>
         <td><%= DateTime.parse(timing.date.to_s).strftime("%m/%d/%Y")%></td>
         <td><%= timing.day%></td>
-        <td><%= timing.hours + ":" + timing.minutes + " " + timing.ampm %></td>
+        <td><%= timing.hours + ":" + timing.minutes + " " + timing.ampm + " - " + (Time.strptime(timing.hours+timing.minutes+timing.ampm,"%I%M%P")+1.hours).strftime("%I:%M %P") %></td>
       </tr>
     <% end %>
   </tbody>

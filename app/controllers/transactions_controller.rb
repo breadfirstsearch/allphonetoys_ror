@@ -39,7 +39,7 @@ class TransactionsController < ApplicationController
     @datesList = []
     @timings = Timing.find_by_sql("SELECT day, hours, minutes, ampm FROM timings")
     @timings.each do |timing|
-      timing.day = date_of_next(timing.day).strftime("%d %b %Y") + " - " + timing.hours + ":" + timing.minutes + " " + timing.ampm
+      timing.day = date_of_next(timing.day).strftime("%d %b %Y") + " , " + timing.hours + ":" + timing.minutes + " " + timing.ampm + " - " +(Time.strptime(timing.hours+timing.minutes+timing.ampm,"%I%M%P")+1.hours).strftime("%I:%M %P")
       @timingsList.push([timing.day, timing.day])
     end
     for i in 1..10
