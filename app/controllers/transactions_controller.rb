@@ -66,7 +66,7 @@ class TransactionsController < ApplicationController
       timing.day = date_of_next(timing.day).strftime("%d %b %Y") + " - " + timing.hours + ":" + timing.minutes + " " + timing.ampm
       @timingsList.push([timing.day, timing.day])
     end
-    for i in 1..10
+    for i in 0..9
       @datesList.push([(Date.today+i).strftime("%d %b %Y"), (Date.today+i).strftime("%d %b %Y")])
     end
 
