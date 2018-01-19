@@ -42,8 +42,7 @@ class TransactionsController < ApplicationController
       timing.day = date_of_next(timing.day).strftime("%d %b %Y") + " , " + timing.hours + ":" + timing.minutes + " " + timing.ampm + " - " +(Time.strptime(timing.hours+timing.minutes+timing.ampm,"%I%M%P")+1.hours).strftime("%I:%M %P")
       @timingsList.push([timing.day, timing.day])
     end
-    # The next 10 days (including today) are available for scheduling a recharge
-    for i in 0..9
+    for i in 1..10
       @datesList.push([(Date.today+i).strftime("%d %b %Y"), (Date.today+i).strftime("%d %b %Y")])
     end
   end
