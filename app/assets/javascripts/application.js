@@ -26,7 +26,6 @@ $(document).on('turbolinks:load', function() {
       var str="<option value>When should we recharge?</option>", dates = []
       var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
       dates[0] = new Date($(this).val().substring(0,12))
-      dates[0] = new Date(dates[0].setDate(dates[0].getDate() + 1))
       for(var i=1; i<10; i++) {
         dates[i] = new Date(dates[i-1])
         dates[i] = new Date(dates[i].setDate(dates[i].getDate() + 1))
