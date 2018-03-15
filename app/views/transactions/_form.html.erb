@@ -9,6 +9,7 @@
     </div>
   <% end %>
 
+  <div class="small">For a New SIM card/Repair, enter 0</div>
   <div class="field form-group-condensed">
     <div class="input-group">
       <span class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></span>
@@ -16,6 +17,7 @@
     </div>
   </div>
 
+   <div class="small">If you don't have a phone number, enter 9999999999</div>
   <div class="field form-group-condensed">
     <div class="input-group">
       <span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt"></span></span>
@@ -39,6 +41,7 @@
     <%= form.select :rechargeDate, options_for_select(@datesList), {prompt: 'When should we recharge?'}, class:'form-control', id: 'transaction_rechargeDate'  %>
   </div>
 
+  <div class="small">For a New SIM card/Repair, please mention this below</div>
   <div class="field form-group">
     <%= form.text_area :remarks, id: :transaction_remarks, class: 'form-control', placeholder: 'Any comments/remarks...', rows: '4', cols: "30" %>
   </div>
@@ -46,4 +49,5 @@
   <div class="actions form-group">
     <%= form.submit "Schedule",  :class=>'btn col-lg-12 orange-button' %>
   </div>
+    <div class="small">PLEASE NOTE: Lyca now charges a regulatory fee of $1 per transaction ($1 total in case of a family plan recharge)</div>
 <% end %>
