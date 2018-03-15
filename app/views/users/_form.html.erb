@@ -17,24 +17,29 @@
       <%= form.text_field :email, id: :user_email, class:'form-control', type:'email', placeholder:'Email' %>
     </div>
 
+	<div class="small">If you don't have a phone number, enter 9999999999</div>
     <div class="field form-group-condensed">
       <div class="input-group">
         <span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt"></span></span>
         <%= form.text_field :phone, id: :user_phone, class:'form-control', type:'text', placeholder:'Phone number' %>
       </div>
     </div>
+	
 
-    <div class="small">Choose a password of at least 6 characters</div>
+    <div class="small">At least 6 characters</div>
     <div class="field form-group-condensed">
       <%= form.password_field :password, :value=>@user.password, id: :user_password, class:'form-control', type:'password', placeholder:'Password' %>
     </div>
+	
 
+	<div class="small">For a New SIM card/Repair, enter 0</div>
     <div class="field form-group-condensed">
       <div class="input-group">
         <span class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></span>
         <%= form.number_field :pref_amount, id: :user_pref_amount, class:'form-control', type:'text', placeholder:'Preferred recharge amount' %>
       </div>
     </div>
+	
 
     <div class="field form-group-condensed">
       <%= form.select :pref_provider, options_for_select(@providers.map { |obj| [obj['provider'], obj['provider']] }, @user.pref_provider), {prompt: 'Select your preferred service provider'}, class:'form-control', id: 'user_pref_provider'  %>
